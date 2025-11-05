@@ -1,124 +1,109 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <title>David Boyadjian – Résumé-Style Portfolio</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <style>
-    :root{
-      --bg:#0d1117;
-      --card:#161b22;
-      --accent:#58a6ff;
-      --text:#c9d1d9;
-      --sub:#8b949e;
-      --border:#30363d;
-      font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
-    }
-    *{box-sizing:border-box;margin:0;padding:0}
-    html{scroll-behavior:smooth}
-    body{background:var(--bg);color:var(--text);line-height:1.6}
-    a{color:var(--accent)}
-    header{
-      position:fixed;top:0;left:0;right:0;
-      background:rgba(13,17,23,.85);
-      backdrop-filter:blur(6px);
-      border-bottom:1px solid var(--border);
-      z-index:10;
-    }
-    nav{
-      max-width:900px;margin:auto;
-      display:flex;align-items:center;justify-content:space-between;
-      padding:1rem 2rem;
-    }
-    .logo{font-weight:700;font-size:1.1rem}
-    nav ul{list-style:none;display:flex;gap:1.5rem}
-    nav li{position:relative}
-    nav li::after{
-      content:'';position:absolute;left:0;bottom:-4px;
-      height:2px;width:0;background:var(--accent);transition:.3s;
-    }
-    nav li.active::after{width:100%}
-    section{padding:4rem 2rem;max-width:900px;margin:auto}
-    h2{margin-bottom:1.2rem;font-size:1.7rem}
-    .section-title{border-bottom:1px solid var(--border);padding-bottom:.5rem;margin-bottom:1.5rem}
-    .job{margin-bottom:2rem}
-    .job-head{display:flex;justify-content:space-between;flex-wrap:wrap;margin-bottom:.3rem}
-    .job-title{font-weight:600}
-    .job-date{color:var(--sub)}
-    ul{margin-left:1.2rem}
-    .btn{
-      display:inline-block;margin-top:.8rem;
-      background:var(--accent);color:#fff;
-      padding:.55rem 1.3rem;border-radius:6px;
-      transition:.25s;
-    }
-    .btn:hover{filter:brightness(1.15);transform:translateY(-2px)}
-    footer{text-align:center;padding:2rem;font-size:.9rem;color:var(--sub)}
-    /* reveal on scroll */
-    .reveal{opacity:0;transform:translateY(30px);transition:.6s}
-    .reveal.visible{opacity:1;transform:none}
-  </style>
-</head>
-<body>
-
-<header>
-  <nav>
-    <div class="logo">David Boyadjian</div>
-    <ul>
-      <li><a href="#education">Education</a></li>
-      <li><a href="#experience">Experience</a></li>
-      <li><a href="#projects">Projects</a></li>
-      <li><a href="#leadership">Leadership</a></li>
-      <li><a href="#skills">Skills</a></li>
-      <li><a href="#contact">Contact</a></li>
-    </ul>
-  </nav>
-</header>
-
-<section id="education" class="reveal">
-  <h2 class="section-title">Education</h2>
-  <p><strong>California State Polytechnic University, Pomona</strong> — <em>Expected May 2029</em><br>
-  Bachelor of Science: <strong>Computer Engineering</strong><br>
-  Minors: <strong>Data Science, Statistics</strong></p>
+<!-- ABOUT -->
+<section id="about">
+  <h2>About</h2>
+  <p>Moved from Armenia to America in 2023 to chase bigger dreams. Today I'm a Computer-Engineering student (Data-Science & Statistics minors) who thrives on trustworthy relationships, sky-high goals, and every small step in between. When I'm not cleaning data or running 400-person career fairs you’ll find me lifting weights, learning Russian, or tweaking this site.</p>
 </section>
 
-<section id="experience" class="reveal">
-  <h2 class="section-title">Experience</h2>
-
-  <div class="job">
-    <div class="job-head">
-      <span class="job-title">Student Assistant – Events & Conferences</span>
-      <span class="job-date">Aug 2025 – Present</span>
+<!-- EDUCATION -->
+<section id="education">
+  <h2>Education</h2>
+  <div class="card">
+    <div class="edu-head">
+      <h3>California State Polytechnic University, Pomona</h3>
+      <span class="date">Expected May 2029</span>
     </div>
-    <p><em>College of Engineering, Cal Poly Pomona</em></p>
-    <ul>
-      <li>Organize 3–5 engineering events monthly (career fairs, club expos, job fairs).</li>
-      <li>Clean & validate 100+ attendance lists; manage folder-based Excel databases.</li>
-      <li>Create Eventbrite flows & Canva assets to boost outreach and engagement.</li>
-      <li>Coordinate vendors, faculty, and sponsors to ensure flawless execution.</li>
-    </ul>
+    <p>Bachelor of Science – Computer Engineering</p>
+    <p>Minors: Data Science, Statistics</p>
   </div>
+</section>
 
-  <div class="job">
-    <div class="job-head">
-      <span class="job-title">Data Analyst Intern</span>
-      <span class="job-date">Jun 2025 – Aug 2025</span>
+<!-- EXPERIENCE -->
+<section id="experience">
+  <h2>Experience</h2>
+  <div class="timeline">
+    <div class="timeline-item">
+      <div class="tl-dot"></div>
+      <div class="tl-content">
+        <h3>Student Assistant – Events & Conferences</h3>
+        <span class="date">Aug 2025 – Present</span>
+        <p>College of Engineering, Cal Poly Pomona</p>
+        <ul>
+          <li>Organize 3–5 engineering events monthly (career fairs, club expos, job fairs).</li>
+          <li>Clean & validate 100+ attendance lists; manage folder-based Excel databases.</li>
+          <li>Create Eventbrite flows & Canva assets to boost outreach and engagement.</li>
+          <li>Coordinate vendors, faculty, and sponsors to ensure flawless execution.</li>
+        </ul>
+      </div>
     </div>
-    <p><em>Arakelian Enterprises / Athens Services, Pacoima</em></p>
+    <div class="timeline-item">
+      <div class="tl-dot"></div>
+      <div class="tl-content">
+        <h3>Data Analyst Intern</h3>
+        <span class="date">Jun 2025 – Aug 2025</span>
+        <p>Arakelian Enterprises / Athens Services, Pacoima</p>
+        <ul>
+          <li>Validated & cleaned SMSS data for business-critical reports.</li>
+          <li>Supported Salesforce Field-Service mobile-app rollout.</li>
+          <li>Built low-code AppSheet automations; prototyped Tableau dashboards.</li>
+          <li>Collaborated on AI-powered DB + custom UI with Flynet Studios.</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PROJECTS -->
+<section id="projects">
+  <h2>Projects</h2>
+  <div class="grid">
+    <div class="card">
+      <h3>Personal Portfolio Website</h3>
+      <p>Responsive, dark-mode-first site served via GitHub Pages. Vanilla HTML/CSS/JS with scroll-spy nav, on-scroll reveals, PWA install, and print-ready résumé.</p>
+      <div class="stack">HTML, CSS, JavaScript, GitHub Pages, PWA</div>
+      <a class="btn" href="https://github.com/YOUR_USERNAME/YOUR_REPO" target="_blank">View Code</a>
+    </div>
+    <!-- add more cards here -->
+  </div>
+</section>
+
+<!-- LEADERSHIP -->
+<section id="leadership">
+  <h2>Leadership</h2>
+  <div class="card">
+    <div class="edu-head">
+      <h3>Executive Board Treasurer</h3>
+      <span class="date">Sep 2023 – Dec 2023</span>
+    </div>
+    <p>Engineers Without Borders – CPP Chapter</p>
     <ul>
-      <li>Validated & cleaned SMSS data for business-critical reports.</li>
-      <li>Supported Salesforce Field-Service mobile-app rollout.</li>
-      <li>Built low-code AppSheet automations; prototyped Tableau dashboards.</li>
-      <li>Collaborated on AI-powered DB + custom UI with Flynet Studios.</li>
+      <li>Managed \$5 000+ across General, Donation & ASI accounts.</li>
+      <li>Processed disbursements, budget submissions, and finance deadlines.</li>
+      <li>Co-planned fundraising events and fund allocation with the executive board.</li>
     </ul>
   </div>
 </section>
 
-<section id="projects" class="reveal">
-  <h2 class="section-title">Projects</h2>
-  <div class="job">
-    <p><strong>Personal Portfolio Website</strong> (this site)</p>
-    <ul>
-      <li>Dark-mode, responsive, single-file GitHub Pages deployment.</li>
-      <li>Smooth-scroll navigation, on-scroll reveal animations, print-ready résumé.</li>
-      <li>Stack: vanilla HTML /
+<!-- SKILLS -->
+<section id="skills">
+  <h2>Skills & Memberships</h2>
+  <p><strong>Technical:</strong> Python, SQL, Tableau, Excel, AppSheet, Salesforce, GitHub, Canva</p>
+  <p><strong>Languages:</strong> Armenian (native), English (fluent), Russian (conversational)</p>
+  <p><strong>Member of:</strong> Engineers Without Borders (2025–Present) | College of Engineering Student Advisory Board (2025–Present)</p>
+</section>
+
+<!-- CONTACT -->
+<section id="contact">
+  <h2>Contact</h2>
+  <p>Want to build something together? Drop a message 👇</p>
+  <form action="https://formspree.io/f/YOUR_FORM_ID" method="POST">
+    <input type="text" name="name" placeholder="Your name" required>
+    <input type="email" name="email" placeholder="Your e-mail" required>
+    <textarea name="message" placeholder="Tell me about your project" required></textarea>
+    <button type="submit" class="btn">Send message</button>
+  </form>
+  <div class="social">
+    <a class="btn" href="mailto:dboyadjian@cpp.edu">Email</a>
+    <a class="btn" href="https://linkedin.com/in/david-boyadjian" target="_blank">LinkedIn</a>
+    <a class="btn" href="https://github.com/YOUR_USERNAME" target="_blank">GitHub</a>
+  </div>
+</section>
