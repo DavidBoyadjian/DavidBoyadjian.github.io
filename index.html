@@ -3,29 +3,37 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <meta name="description" content="David Boyadjian – Computer Engineering student portfolio and resume." />
+  <meta
+    name="description"
+    content="David Boyadjian – Computer Engineering student portfolio, resume, projects, and experience."
+  />
   <title>David Boyadjian</title>
 
-  <!-- Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"
+    rel="stylesheet"
+  />
 
   <link rel="icon" type="image/svg+xml" href="assets/favicon.svg" />
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
-  <!-- Header / Nav -->
   <header id="top">
     <nav class="nav container" aria-label="Primary">
       <a class="brand" href="#hero">David Boyadjian</a>
 
       <button class="menu-toggle" aria-label="Open menu" aria-expanded="false">
-        <span class="bar"></span><span class="bar"></span><span class="bar"></span>
+        <span class="bar"></span>
+        <span class="bar"></span>
+        <span class="bar"></span>
       </button>
 
       <ul class="links">
+        <li><a class="nav-link" href="#about">About</a></li>
         <li><a class="nav-link" href="#experience">Experience</a></li>
+        <li><a class="nav-link" href="#projects">Projects</a></li>
         <li><a class="nav-link" href="#education">Education</a></li>
         <li><a class="nav-link" href="#activities">Activities</a></li>
         <li><a class="nav-link" href="#skills">Skills</a></li>
@@ -42,16 +50,26 @@
 
   <!-- Hero -->
   <section id="hero" class="hero container">
-    <img class="avatar" alt="David Boyadjian avatar"
-      src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='192' height='192' viewBox='0 0 192 192'%3E%3Crect width='192' height='192' rx='24' fill='%234A90E2'/%3E%3Ctext x='50%25' y='58%25' text-anchor='middle' font-family='Arial' font-size='96' font-weight='700' fill='white'%3EDB%3C/text%3E%3C/svg%3E" />
+    <div class="hero-image-wrap reveal">
+      <!-- Replace this with your real photo -->
+      <img class="avatar" src="assets/profile.jpg" alt="Portrait of David Boyadjian" />
+    </div>
 
-    <div class="hero-copy">
+    <div class="hero-copy reveal">
+      <p class="eyebrow">Computer Engineering Student • Builder • Future ML Engineer</p>
       <h1>Hi, I’m <span class="grad">David Boyadjian</span></h1>
-      <p class="subtitle">Computer Engineering student @ Cal Poly Pomona • Data/Software curious • Builder & student leader</p>
+      <p class="subtitle">
+        Computer Engineering student at Cal Poly Pomona minoring in Data Science & Statistics.
+        I enjoy building technical projects, working with data, and growing into a strong software
+        and machine learning engineer.
+      </p>
 
       <div class="cta-row">
-        <a class="btn btn-primary" href="assets/resume.pdf" download>Download Resume</a>
-        <a class="btn btn-outline" href="#experience">View my work</a>
+        <a class="btn btn-primary" href="assets/David_Boyadjian_Resume.pdf" download>
+          Download Resume
+        </a>
+        <a class="btn btn-outline" href="#projects">View Projects</a>
+        <a class="btn btn-ghost" href="#contact">Contact Me</a>
       </div>
 
       <div class="quick-contacts">
@@ -59,7 +77,41 @@
         <span>•</span>
         <a href="tel:+18187513885">+1 (818) 751-3885</a>
         <span>•</span>
-        <a href="www.linkedin.com/in/david-boyadjian" target="_blank" rel="noopener">LinkedIn</a>
+        <a href="https://www.linkedin.com/in/david-boyadjian" target="_blank" rel="noopener">LinkedIn</a>
+      </div>
+
+      <div class="hero-stats">
+        <div class="stat">
+          <strong>2+</strong>
+          <span>Professional roles</span>
+        </div>
+        <div class="stat">
+          <strong>3</strong>
+          <span>Languages spoken</span>
+        </div>
+        <div class="stat">
+          <strong>2029</strong>
+          <span>Expected graduation</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- About -->
+  <section id="about" class="section alt">
+    <div class="container">
+      <h2 class="section-title reveal">About Me</h2>
+      <div class="about-card reveal">
+        <p>
+          I’m a Computer Engineering student passionate about technology, data, and continuous growth.
+          My experience includes data analysis, workflow automation, event operations, and student leadership.
+          I’m especially interested in software engineering, machine learning, data-driven products,
+          and building projects that solve real problems.
+        </p>
+        <p>
+          Right now, I’m focused on strengthening my technical foundation through school, internships,
+          leadership experiences, and hands-on projects that help me become a competitive engineer.
+        </p>
       </div>
     </div>
   </section>
@@ -67,10 +119,10 @@
   <!-- Experience -->
   <section id="experience" class="section">
     <div class="container">
-      <h2 class="section-title">Work Experience</h2>
+      <h2 class="section-title reveal">Work Experience</h2>
 
       <div class="grid">
-        <article class="card">
+        <article class="card reveal">
           <header class="card-head">
             <div>
               <h3>Data Analyst Intern</h3>
@@ -82,14 +134,14 @@
             </div>
           </header>
           <ul class="bullets">
-            <li>Validated and cleaned database information in SMSS to ensure integrity and reliability for analysis.</li>
-            <li>Supported Salesforce app development/management and built low-code AppSheet tools to automate workflows.</li>
-            <li>Designed Tableau dashboards to translate data into actionable insights; collaborated on an AI-powered DB with custom UI.</li>
-            <li>Gained exposure to UI/UX and full-stack development through Flynet Studios.</li>
+            <li>Validated and cleaned database information in SMSS to improve integrity and reliability for analysis.</li>
+            <li>Supported Salesforce app development and management while building low-code AppSheet tools for workflow automation.</li>
+            <li>Designed Tableau dashboards that turned raw data into actionable insights for decision-making.</li>
+            <li>Collaborated on an AI-powered database interface and gained exposure to UI/UX and full-stack development through Flynet Studios.</li>
           </ul>
         </article>
 
-        <article class="card">
+        <article class="card reveal">
           <header class="card-head">
             <div>
               <h3>Student Assistant – Events & Conferences</h3>
@@ -101,22 +153,74 @@
             </div>
           </header>
           <ul class="bullets">
-            <li>Planned and hosted engineering events for the Dean’s boards and student organizations (3–5 per month).</li>
-            <li>Managed folder-based databases and cleaned/validated >100 attendance lists in Excel.</li>
-            <li>Owned Eventbrite registrations and Canva promos to improve turnout and engagement.</li>
-            <li>Coordinated vendors, companies, faculty, and staff; handled reservations with 25Live and data tracking in Excel.</li>
+            <li>Planned and hosted engineering events for the Dean’s boards and student organizations, averaging 3–5 events per month.</li>
+            <li>Managed folder-based databases and cleaned/validated 100+ attendance lists in Excel.</li>
+            <li>Owned Eventbrite registrations and Canva promotions to improve event turnout and engagement.</li>
+            <li>Coordinated vendors, companies, faculty, and staff while handling 25Live reservations and data tracking.</li>
           </ul>
         </article>
       </div>
     </div>
   </section>
 
-  <!-- Education -->
-  <section id="education" class="section alt">
+  <!-- Projects -->
+  <section id="projects" class="section alt">
     <div class="container">
-      <h2 class="section-title">Education</h2>
+      <h2 class="section-title reveal">Projects</h2>
+
       <div class="grid">
-        <article class="card">
+        <article class="card reveal">
+          <header class="card-head">
+            <div>
+              <h3>Portfolio Website</h3>
+              <p class="org">HTML • CSS • JavaScript • GitHub Pages</p>
+            </div>
+          </header>
+          <p>
+            Built and deployed a personal portfolio website to showcase experience, education, skills,
+            and future technical projects in a clean and responsive layout.
+          </p>
+        </article>
+
+        <article class="card reveal">
+          <header class="card-head">
+            <div>
+              <h3>Data Dashboard Work</h3>
+              <p class="org">Tableau • Excel • Data Cleaning</p>
+            </div>
+          </header>
+          <p>
+            Created data dashboards and supported analysis workflows by cleaning datasets and organizing
+            business information into clearer reporting tools.
+          </p>
+        </article>
+
+        <article class="card reveal">
+          <header class="card-head">
+            <div>
+              <h3>AppSheet Workflow Tools</h3>
+              <p class="org">AppSheet • Automation • Operations</p>
+            </div>
+          </header>
+          <p>
+            Helped build workflow tools that simplified processes and improved internal organization
+            using low-code solutions.
+          </p>
+        </article>
+      </div>
+
+      <p class="section-note reveal">
+        More software, data science, and machine learning projects coming soon.
+      </p>
+    </div>
+  </section>
+
+  <!-- Education -->
+  <section id="education" class="section">
+    <div class="container">
+      <h2 class="section-title reveal">Education</h2>
+      <div class="grid">
+        <article class="card reveal">
           <header class="card-head">
             <div>
               <h3>California State Polytechnic University, Pomona</h3>
@@ -126,9 +230,12 @@
               <span>Expected Graduation: May 2029</span>
             </div>
           </header>
+          <p>
+            Building a strong foundation in engineering, programming, mathematics, and data-driven problem solving.
+          </p>
         </article>
 
-        <article class="card">
+        <article class="card reveal">
           <header class="card-head">
             <div>
               <h3>Rose & Alex Pilibos Armenian School</h3>
@@ -138,7 +245,7 @@
           </header>
         </article>
 
-        <article class="card">
+        <article class="card reveal">
           <header class="card-head">
             <div>
               <h3>Anania Shirakatsy Lyceum</h3>
@@ -152,75 +259,87 @@
   </section>
 
   <!-- Activities -->
-  <section id="activities" class="section">
+  <section id="activities" class="section alt">
     <div class="container">
-      <h2 class="section-title">Extracurricular Activities</h2>
+      <h2 class="section-title reveal">Extracurricular Activities</h2>
 
       <div class="grid">
-        <article class="card">
+        <article class="card reveal">
           <header class="card-head">
             <div>
               <h3>Engineers Without Borders</h3>
               <p class="org">Treasurer • 2025 – 2026</p>
             </div>
           </header>
-          <p>Managed budgets, tracked expenses, ensured financial transparency, and coordinated fundraising for humanitarian engineering projects.</p>
+          <p>
+            Managed budgets, tracked expenses, ensured financial transparency, and supported fundraising
+            for humanitarian engineering projects.
+          </p>
         </article>
 
-        <article class="card">
+        <article class="card reveal">
           <header class="card-head">
             <div>
               <h3>Dean of Engineering Student Advisory Board</h3>
               <p class="org">Board Member • 2025 – 2026</p>
             </div>
           </header>
-          <p>Represented student voice on curriculum improvements and college initiatives; collaborated with faculty and administration.</p>
+          <p>
+            Represented student perspectives on curriculum improvements and college initiatives while
+            collaborating with faculty and administration.
+          </p>
         </article>
 
-        <article class="card">
+        <article class="card reveal">
           <header class="card-head">
             <div>
               <h3>Pilibos Armenian Club</h3>
               <p class="org">Member • 2023 – 2025</p>
             </div>
           </header>
-          <p>Organized cultural events, service projects, and fundraising initiatives celebrating Armenian heritage and community.</p>
+          <p>
+            Organized cultural events, service projects, and fundraising initiatives celebrating Armenian
+            heritage and community.
+          </p>
         </article>
 
-        <article class="card">
+        <article class="card reveal">
           <header class="card-head">
             <div>
               <h3>Homenetmen</h3>
               <p class="org">Scout Leader • 2018 – 2023</p>
             </div>
           </header>
-          <p>Mentored youth through outdoor activities and service; developed leadership, teamwork, and organizational skills.</p>
+          <p>
+            Mentored youth through outdoor activities and service, developing leadership, teamwork,
+            and organizational skills.
+          </p>
         </article>
       </div>
     </div>
   </section>
 
   <!-- Achievements -->
-  <section id="achievements" class="section alt">
+  <section id="achievements" class="section">
     <div class="container">
-      <h2 class="section-title">Achievements</h2>
-      <ul class="chips">
+      <h2 class="section-title reveal">Achievements</h2>
+      <ul class="chips reveal">
         <li class="chip">National Honor Society</li>
-        <li class="chip">Scholarships for academic excellence</li>
+        <li class="chip">Scholarships for Academic Excellence</li>
         <li class="chip">Principal’s Honors Award</li>
-        <li class="chip">Scholar Athlete (multiple sports)</li>
+        <li class="chip">Scholar Athlete</li>
         <li class="chip">Armenian Basketball Youth National Team</li>
       </ul>
     </div>
   </section>
 
   <!-- Skills -->
-  <section id="skills" class="section">
+  <section id="skills" class="section alt">
     <div class="container">
-      <h2 class="section-title">Skills</h2>
+      <h2 class="section-title reveal">Skills</h2>
 
       <div class="skills">
-        <div class="skill-col">
+        <div class="skill-col reveal">
           <h3>Languages</h3>
           <div class="tags">
             <span class="tag">Armenian</span>
@@ -229,7 +348,7 @@
           </div>
         </div>
 
-        <div class="skill-col">
+        <div class="skill-col reveal">
           <h3>Technical Tools</h3>
           <div class="tags">
             <span class="tag">Excel</span>
@@ -238,10 +357,12 @@
             <span class="tag">Canva</span>
             <span class="tag">25Live</span>
             <span class="tag">Eventbrite</span>
+            <span class="tag">GitHub</span>
+            <span class="tag">VS Code</span>
           </div>
         </div>
 
-        <div class="skill-col">
+        <div class="skill-col reveal">
           <h3>Development</h3>
           <div class="tags">
             <span class="tag">Salesforce</span>
@@ -249,23 +370,27 @@
             <span class="tag">Python</span>
             <span class="tag">SQL</span>
             <span class="tag">Tableau</span>
+            <span class="tag">HTML</span>
+            <span class="tag">CSS</span>
+            <span class="tag">JavaScript</span>
             <span class="tag">UI/UX</span>
           </div>
         </div>
 
-        <div class="skill-col">
-          <h3>Soft</h3>
+        <div class="skill-col reveal">
+          <h3>Soft Skills</h3>
           <div class="tags">
             <span class="tag">Discipline</span>
             <span class="tag">Time Management</span>
             <span class="tag">Communication</span>
             <span class="tag">Leadership</span>
             <span class="tag">Event Coordination</span>
+            <span class="tag">Teamwork</span>
           </div>
         </div>
 
-        <div class="skill-col">
-          <h3>Academic</h3>
+        <div class="skill-col reveal">
+          <h3>Academic Areas</h3>
           <div class="tags">
             <span class="tag">Algebra</span>
             <span class="tag">Statistics</span>
@@ -278,17 +403,18 @@
     </div>
   </section>
 
-  <!-- Contact / Footer -->
+  <!-- Footer -->
   <footer id="contact" class="footer">
     <div class="container footer-inner">
       <div class="foot-left">
         <h3>Let’s connect</h3>
-        <p>Open to internships and projects. Reach out anytime.</p>
+        <p>Open to internships, technical opportunities, and meaningful projects.</p>
       </div>
       <div class="foot-links">
         <a href="mailto:dboyadjian@cpp.edu">Email</a>
         <a href="tel:+18187513885">Call</a>
-        <a href="assets/resume.pdf" download>Resume</a>
+        <a href="https://www.linkedin.com/in/david-boyadjian" target="_blank" rel="noopener">LinkedIn</a>
+        <a href="assets/David_Boyadjian_Resume.pdf" download>Resume</a>
       </div>
     </div>
     <p class="copyright">© <span id="year"></span> David Boyadjian</p>
