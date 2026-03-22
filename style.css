@@ -838,9 +838,21 @@ header {
     padding: 4.5rem 0;
   }
 
-.coursework-tags .tag-button {
+
+  .footer-inner {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+}
+
+
+/* Modal for coursework buttons */
+.coursework-tags .tag-button,
+.tag-button {
   cursor: pointer;
   font-family: inherit;
+  appearance: none;
+  -webkit-appearance: none;
 }
 
 .course-modal {
@@ -849,8 +861,8 @@ header {
   display: none;
   align-items: center;
   justify-content: center;
-  padding: 1.25rem;
-  z-index: 2000;
+  padding: 24px;
+  z-index: 9999;
 }
 
 .course-modal.open {
@@ -860,58 +872,54 @@ header {
 .course-modal-backdrop {
   position: absolute;
   inset: 0;
-  background: rgba(0, 0, 0, 0.55);
-  backdrop-filter: blur(6px);
+  background: rgba(0, 0, 0, 0.6);
+  backdrop-filter: blur(8px);
 }
 
 .course-modal-content {
   position: relative;
-  z-index: 1;
-  width: min(700px, 100%);
+  z-index: 10000;
+  width: min(720px, 100%);
   background: hsl(var(--card));
+  color: hsl(var(--fg));
   border: 1px solid hsl(var(--border));
   border-radius: 24px;
-  padding: 1.75rem;
-  box-shadow: var(--glow);
-  transform: scale(0.96);
-  animation: modalPop 0.22s ease forwards;
+  padding: 28px;
+  box-shadow: 0 0 0 1px hsl(var(--primary) / 0.25),
+              0 0 24px hsl(var(--primary) / 0.2),
+              0 0 48px hsl(var(--primary-2) / 0.18),
+              0 24px 60px rgba(0, 0, 0, 0.35);
+  opacity: 1;
+  visibility: visible;
+  transform: none;
 }
 
 .course-modal-close {
   position: absolute;
-  top: 0.9rem;
-  right: 0.9rem;
+  top: 12px;
+  right: 12px;
   width: 42px;
   height: 42px;
   border: 1px solid hsl(var(--border));
   border-radius: 999px;
   background: hsl(var(--card));
   color: hsl(var(--fg));
-  font-size: 1.4rem;
+  font-size: 1.5rem;
+  line-height: 1;
   cursor: pointer;
-  transition: transform 0.2s ease, box-shadow 0.2s ease, background 0.2s ease;
-}
-
-.course-modal-close:hover {
-  transform: scale(1.08);
-  box-shadow: var(--glow);
-  background: linear-gradient(
-    135deg,
-    hsl(var(--primary) / 0.1) 0%,
-    hsl(var(--primary-2) / 0.1) 100%
-  );
 }
 
 .course-modal-code {
-  margin: 0 0 0.35rem;
+  margin: 0 0 8px;
   color: hsl(var(--primary));
   font-weight: 800;
   letter-spacing: 0.04em;
 }
 
 .course-modal-title {
-  margin: 0 0 1rem;
-  font-size: 1.6rem;
+  margin: 0 0 14px;
+  color: hsl(var(--fg));
+  font-size: 1.55rem;
   line-height: 1.2;
 }
 
@@ -919,21 +927,5 @@ header {
   margin: 0;
   color: hsl(var(--fg));
   line-height: 1.75;
-}
-
-@keyframes modalPop {
-  from {
-    opacity: 0;
-    transform: scale(0.96) translateY(8px);
-  }
-  to {
-    opacity: 1;
-    transform: scale(1) translateY(0);
-  }
-}
-  
-  .footer-inner {
-    flex-direction: column;
-    align-items: flex-start;
-  }
+  white-space: normal;
 }
