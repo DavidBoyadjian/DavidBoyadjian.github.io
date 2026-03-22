@@ -70,5 +70,67 @@ const observer = new IntersectionObserver(
 
 document.querySelectorAll(".reveal").forEach((el) => observer.observe(el));
 
+// Course modal
+const courseData = {
+  python: {
+    code: "CS1260",
+    title: "Python",
+    description:
+      "Basic concepts of computer software and programming. Numbers, strings, and basic I/O. Expressions, control structures, lists, tuples, and functions. File I/O and introduction to exception handling. Introduction to object-oriented programming. Problem-solving techniques."
+  },
+  circuit: {
+    code: "ECE1101",
+    title: "Circuit Analysis I",
+    description:
+      "Introduction to the fundamental laws of electric circuits, applications to circuit analysis, matrix methods. An introduction to circuit analysis in the time domain using differential equations with computer tools. Selected laboratory experiments emphasizing the supporting the topics covered in ECE 1101."
+  }
+};
+
+const courseModal = document.getElementById("courseModal");
+const courseModalBackdrop = document.getElementById("courseModalBackdrop");
+const courseModalClose = document.getElementById("courseModalClose");
+const courseModalCode = document.getElementById("courseModalCode");
+const courseModalTitle = document.getElementById("courseModalTitle");
+const courseModalDescription = document.getElementById("courseModalDescription");
+
+function openCourseModal(courseKey) {
+  const course = courseData[courseKey];
+  if (!course) return;
+
+  courseModalCode.textContent = course.code;
+  courseModalTitle.textContent = course.title;
+  courseModalDescription.textContent = course.description;
+
+  courseModal.classList.add("open");
+  courseModal.setAttribute("aria-hidden", "false");
+  document.body.style.overflow = "hidden";
+}
+
+function closeCourseModal() {
+  courseModal.classList.remove("open");
+  courseModal.setAttribute("aria-hidden", "true");
+  document.body.style.overflow = "";
+}
+
+document.querySelectorAll(".tag-button").forEach((button) => {
+  button.addEventListener("click", () => {
+    openCourseModal(button.dataset.course);
+  });
+});
+
+if (courseModalClose) {
+  courseModalClose.addEventListener("click", closeCourseModal);
+}
+
+if (courseModalBackdrop) {
+  courseModalBackdrop.addEventListener("click", closeCourseModal);
+}
+
+document.addEventListener("keydown", (e) => {
+  if (e.key === "Escape" && courseModal.classList.contains("open")) {
+    closeCourseModal();
+  }
+});
+
 // Footer year
 document.getElementById("year").textContent = new Date().getFullYear();
