@@ -31,20 +31,29 @@ document.querySelectorAll('a[href^="#"]').forEach((a) => {
     if (!el) return;
 
     e.preventDefault();
-    const y = el.getBoundingClientRect().top + window.pageYOffset - 70;
-    window.scrollTo({ top: y, behavior: "smooth" });
+
+    const headerOffset = 85;
+    const elementPosition = el.getBoundingClientRect().top + window.pageYOffset;
+    const offsetPosition = elementPosition - headerOffset;
+
+    window.scrollTo({
+      top: offsetPosition,
+      behavior: "smooth",
+    });
 
     links.classList.remove("open");
     menuBtn.setAttribute("aria-expanded", "false");
   });
 });
 
-// Sticky header background on scroll
+// Sticky/fixed header styling on scroll
 window.addEventListener("scroll", () => {
   const scrolled = window.scrollY > 8;
-  header.style.background = scrolled ? "hsl(var(--bg) / 0.8)" : "transparent";
-  header.style.backdropFilter = scrolled ? "blur(12px)" : "none";
-  header.style.borderBottom = scrolled ? "1px solid hsl(var(--border))" : "1px solid transparent";
+  header.style.background = scrolled ? "hsl(var(--bg) / 0.85)" : "hsl(var(--bg) / 0.8)";
+  header.style.backdropFilter = "blur(12px)";
+  header.style.borderBottom = scrolled
+    ? "1px solid hsl(var(--border))"
+    : "1px solid hsl(var(--border))";
 });
 
 // Reveal on scroll
