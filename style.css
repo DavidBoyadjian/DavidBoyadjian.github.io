@@ -647,6 +647,11 @@ header {
   padding: 0 0.2rem 0 0;
 }
 
+.description {
+  line-height: 1.6;
+  margin-top: 10px;
+}
+
 .bullets li {
   margin: 0.5rem 0;
   line-height: 1.65;
