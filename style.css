@@ -604,6 +604,10 @@ header {
   margin-top: 0.6rem;
 }
 
+#education .card {
+  min-height: 220px;
+}
+
 .card-head {
   display: flex;
   justify-content: space-between;
