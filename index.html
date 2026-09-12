@@ -1,35 +1,47 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <meta
-    name="description"
-    content="David Boyadjian — Computer Engineering student building embedded systems, intelligent software, and data-driven engineering tools."
-  />
-  <meta name="theme-color" content="#07111f" />
-
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="David Boyadjian — Computer Engineering student building embedded systems, intelligent software, and data-driven engineering tools.">
+  <meta name="theme-color" content="#eaf2f8">
   <title>David Boyadjian | Computer Engineering</title>
 
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link
-    href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Manrope:wght@400;500;600;700;800&display=swap"
-    rel="stylesheet"
-  />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Manrope:wght@400;500;600;700;800&family=Sora:wght@500;600;700;800&display=swap" rel="stylesheet">
 
-  <link rel="icon" type="image/svg+xml" href="assets/favicon.svg" />
-  <link rel="stylesheet" href="style.css" />
+  <script>
+    document.documentElement.classList.toggle(
+      "dark",
+      localStorage.getItem("theme")
+        ? localStorage.getItem("theme") === "dark"
+        : matchMedia("(prefers-color-scheme: dark)").matches
+    );
+  </script>
+
+  <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
   <a class="skip-link" href="#main">Skip to content</a>
 
+  <div class="ambient" aria-hidden="true">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+
+  <div class="page-grid" aria-hidden="true"></div>
+
+  <div class="scroll-progress" aria-hidden="true">
+    <span id="scrollProgress"></span>
+  </div>
+
   <header class="site-header">
-    <nav class="nav container" aria-label="Primary navigation">
+    <nav class="glass nav shell" aria-label="Primary navigation">
       <a class="brand" href="#hero" aria-label="David Boyadjian, home">
-        <span>DB</span>
-        <span class="brand-name">David Boyadjian</span>
+        D<span>.</span>BOYADJIAN
       </a>
 
       <button
@@ -38,80 +50,534 @@
         aria-label="Open navigation"
         aria-expanded="false"
       >
-        <span class="bar"></span>
-        <span class="bar"></span>
-        <span class="bar"></span>
+        <span></span>
+        <span></span>
       </button>
 
-      <ul class="links">
-        <li><a href="#about">About</a></li>
-        <li><a href="#experience">Experience</a></li>
-        <li><a href="#projects">Projects</a></li>
-        <li><a href="#education">Education</a></li>
-        <li><a href="#leadership">Leadership</a></li>
-        <li><a href="#contact">Contact</a></li>
+      <div class="nav-links">
+        <a href="#work">Work</a>
+        <a href="#experience">Experience</a>
+        <a href="#education">Education</a>
+        <a href="#leadership">Leadership</a>
+        <a href="#contact">Contact</a>
+      </div>
 
-        <li>
-          <button
-            class="theme-toggle"
-            id="themeBtn"
-            type="button"
-            aria-label="Switch color theme"
-          >
-            <span class="icon-sun" aria-hidden="true">Light</span>
-            <span class="icon-moon" aria-hidden="true">Dark</span>
-          </button>
-        </li>
-      </ul>
+      <div class="nav-actions">
+        <button
+          class="icon-button"
+          id="themeBtn"
+          type="button"
+          aria-label="Switch color theme"
+        >
+          <span class="sun" aria-hidden="true">☼</span>
+          <span class="moon" aria-hidden="true">◐</span>
+        </button>
+
+        <a
+          class="nav-resume"
+          href="assets/David%20Boyadjian%20Resume%20-%20Summer%202027.pdf"
+          download
+        >
+          Résumé <span aria-hidden="true">↓</span>
+        </a>
+      </div>
     </nav>
   </header>
 
-  <main id="main">
-    <!-- Hero -->
-    <section id="hero" class="hero container">
-      <div class="hero-copy reveal">
-        <p class="eyebrow">
+  <main id="main" class="shell">
+    <section id="hero" class="glass hero reveal visible">
+      <div class="hero-copy">
+        <p class="marker">
           <span class="status-dot"></span>
           Open to engineering internships
         </p>
 
-        <h1>
-          I build where
-          <span class="grad">hardware, intelligence,</span>
-          and data meet.
-        </h1>
+        <div>
+          <p class="overline">Computer Engineering · Pomona, California</p>
 
-        <p class="subtitle">
-          I’m David Boyadjian, a Computer Engineering student,
-          undergraduate researcher, and embedded firmware developer building
-          intelligent systems across hardware, AI, and data.
-        </p>
+          <h1>
+            David<br>
+            <span>Boyadjian.</span>
+          </h1>
 
-        <div class="focus-line" aria-label="Areas of focus">
-          <span>Embedded systems</span>
-          <span>Digital engineering</span>
-          <span>AI + predictive modeling</span>
+          <p class="hero-line">
+            I build where hardware, intelligence, and data meet.
+          </p>
+
+          <p class="hero-intro">
+            Computer Engineering student, undergraduate researcher, and
+            embedded firmware developer creating intelligent systems across
+            hardware, AI, and data.
+          </p>
         </div>
 
-        <div class="cta-row">
-          <a class="btn btn-primary" href="#projects">
+        <div class="hero-actions">
+          <a class="button primary" href="#work">
             Explore my work <span aria-hidden="true">↘</span>
           </a>
 
-          <a
-            class="btn btn-outline"
-            href="assets/David%20Boyadjian%20Resume%20-%20Summer%202027.pdf"
-            download
+          <a class="button secondary" href="mailto:dboyadjian@cpp.edu">
+            Email me <span aria-hidden="true">↗</span>
+          </a>
+        </div>
+      </div>
+
+      <div class="hero-media">
+        <figure class="portrait-card">
+          <img
+            src="assets/david_02.jpg"
+            alt="Portrait of David Boyadjian"
+            fetchpriority="high"
           >
-            Download Summer 2027 résumé
+
+          <figcaption>
+            <span>Computer Engineering</span>
+            <span>CPP · 2029</span>
+          </figcaption>
+        </figure>
+
+        <div class="float-chip chip-one">
+          <strong>STM32</strong>
+          <small>Firmware + control</small>
+        </div>
+
+        <div class="float-chip chip-two">
+          <strong>LLM / RAG</strong>
+          <small>Digital engineering</small>
+        </div>
+      </div>
+    </section>
+
+    <section class="metrics" aria-label="Profile highlights">
+      <article class="glass reveal">
+        <strong>30K+</strong>
+        <span>records analyzed</span>
+      </article>
+
+      <article class="glass reveal">
+        <strong>2</strong>
+        <span>data-focused minors</span>
+      </article>
+
+      <article class="glass reveal">
+        <strong>3</strong>
+        <span>languages spoken</span>
+      </article>
+
+      <article class="glass reveal">
+        <strong>May ’29</strong>
+        <span>expected graduation</span>
+      </article>
+    </section>
+
+    <section id="work" class="bento section-anchor">
+      <article class="glass panel about-panel reveal">
+        <p class="marker">(a) About</p>
+
+        <h2>Engineering the physical and digital together.</h2>
+
+        <p>
+          I’m pursuing a B.S. in Computer Engineering with two minors—Data
+          Science and Statistics—building range across firmware, circuits,
+          machine learning, statistical modeling, databases, and digital
+          engineering.
+        </p>
+
+        <p>
+          I’m most energized by systems that turn advanced technology into
+          real-world impact: autonomous platforms, local AI, predictive
+          models, and reliable embedded intelligence.
+        </p>
+
+        <div class="principles">
+          <span>Build hands-on</span>
+          <span>Think across disciplines</span>
+          <span>Design for real users</span>
+        </div>
+      </article>
+
+      <article class="glass panel project flagship reveal">
+        <div class="panel-top">
+          <p class="marker">(b) Flagship</p>
+          <span>01</span>
+        </div>
+
+        <div class="project-state">
+          <span></span>
+          Active build
+        </div>
+
+        <h3>Northrop Grumman UGV Firmware</h3>
+
+        <p>
+          Contributing modular STM32 control for an autonomous
+          emergency-response vehicle using PWM output, GPIO direction logic,
+          and reusable motor and servo interfaces—while coordinating firmware,
+          autonomy, and integration teams.
+        </p>
+
+        <div class="tags">
+          <span>Embedded C</span>
+          <span>STM32 HAL</span>
+          <span>PWM</span>
+          <span>GPIO</span>
+          <span>Firmware</span>
+        </div>
+
+        <div class="code-window" aria-hidden="true">
+          <i></i>
+          <i></i>
+          <i></i>
+
+          <code>
+            HAL_TIM_PWM_Start(&amp;htim2, TIM_CHANNEL_1);<br>
+            <em>motor_set_velocity</em>(left_motor, velocity);<br>
+            HAL_GPIO_WritePin(DIR_GPIO_Port, DIR_Pin, state);
+          </code>
+        </div>
+      </article>
+
+      <article class="glass panel project reveal">
+        <div class="panel-top">
+          <p class="marker">(c) Platform</p>
+          <span>02</span>
+        </div>
+
+        <div class="project-state deployed">
+          <span></span>
+          Deployed
+        </div>
+
+        <h3>Engineering Event Management System</h3>
+
+        <p>
+          Designed and deployed a full-stack dashboard for event tracking,
+          multi-select audiences, advanced filters, CSV exports, logistics
+          planning, and real-time CRUD operations.
+        </p>
+
+        <div class="tags">
+          <span>React</span>
+          <span>TypeScript</span>
+          <span>PostgreSQL</span>
+          <span>Express</span>
+          <span>REST API</span>
+        </div>
+      </article>
+
+      <article class="glass panel project reveal">
+        <div class="panel-top">
+          <p class="marker">(d) Web</p>
+          <span>03</span>
+        </div>
+
+        <div class="project-state deployed">
+          <span></span>
+          Live
+        </div>
+
+        <h3>Personal Portfolio</h3>
+
+        <p>
+          A responsive, accessible website designed to communicate my work
+          across computer engineering, research, software, and data.
+        </p>
+
+        <div class="tags">
+          <span>HTML</span>
+          <span>CSS</span>
+          <span>JavaScript</span>
+          <span>GitHub Pages</span>
+        </div>
+      </article>
+    </section>
+
+    <section id="experience" class="experience-layout section-anchor">
+      <article class="glass panel experience-panel reveal">
+        <p class="marker">(e) Experience</p>
+
+        <h2>Research, technical, and professional experience.</h2>
+
+        <div class="experience-list">
+          <div class="experience-item">
+            <p class="date">May 2026–Present</p>
+
+            <img
+              class="logo"
+              src="assets/CPPENG_Logo.png"
+              alt="Cal Poly Pomona College of Engineering logo"
+            >
+
+            <div>
+              <h3>Undergraduate Research — Digital Systems Engineering</h3>
+
+              <p class="organization">
+                Exploration and Space Technologies · Digital Engineering Lab
+              </p>
+
+              <p>
+                Helping launch applied research across AI, CAD, 3D scanning,
+                and additive manufacturing while preparing a local LLM and RAG
+                workflow on Apple Silicon with MLX-LM.
+              </p>
+            </div>
+          </div>
+
+          <div class="experience-item">
+            <p class="date">Aug 2026–Present</p>
+
+            <img
+              class="logo"
+              src="assets/NGCP_Logo.png"
+              alt="Northrop Grumman Collaboration Project logo"
+            >
+
+            <div>
+              <h3>Northrop Grumman Collaboration Project</h3>
+
+              <p class="organization">
+                Unmanned Ground Vehicle · Firmware Subteam
+              </p>
+
+              <p>
+                Developing STM32 embedded firmware and serving as liaison
+                between firmware, autonomy, and integration subteams.
+              </p>
+            </div>
+          </div>
+
+          <div class="experience-item">
+            <p class="date">Jun–Aug 2025</p>
+
+            <img
+              class="logo"
+              src="assets/ATHENS_Logo.png"
+              alt="Athens Services logo"
+            >
+
+            <div>
+              <h3>Data Analyst Intern</h3>
+
+              <p class="organization">
+                Arakelian Enterprises Inc. · Athens Services
+              </p>
+
+              <p>
+                Queried, joined, cleaned, and validated 30,000+ records with
+                SSMS; improved Salesforce and AppSheet workflows and supported
+                Tableau reporting.
+              </p>
+            </div>
+          </div>
+        </div>
+      </article>
+
+      <aside class="glass panel toolkit reveal">
+        <p class="marker">(f) Toolkit</p>
+
+        <h2>Technical range with an embedded core.</h2>
+
+        <div class="tool-list">
+          <div>
+            <h3>Programming &amp; software</h3>
+            <p>
+              Python · SQL · JavaScript · TypeScript · React · Node.js ·
+              PostgreSQL
+            </p>
+          </div>
+
+          <div>
+            <h3>AI &amp; engineering</h3>
+            <p>
+              MLX-LM · RAG · LLM · STM32 · LTspice · Fusion 360 · 3D scanning
+            </p>
+          </div>
+
+          <div>
+            <h3>Tools &amp; platforms</h3>
+            <p>
+              Git · GitHub · Tableau · Salesforce · AppSheet · Vercel ·
+              Render · REST APIs
+            </p>
+          </div>
+
+          <div>
+            <h3>Languages</h3>
+            <p>Armenian · English · Russian</p>
+          </div>
+        </div>
+      </aside>
+    </section>
+
+    <section id="education" class="education-layout section-anchor">
+      <article class="glass panel education reveal">
+        <div class="panel-top">
+          <p class="marker">(g) Education</p>
+          <span>2025—2029</span>
+        </div>
+
+        <div class="school-heading">
+          <img
+            class="logo"
+            src="assets/CPP_Logo.png"
+            alt="Cal Poly Pomona logo"
+          >
+
+          <div>
+            <h2>California State Polytechnic University, Pomona</h2>
+
+            <p class="organization">
+              B.S. Computer Engineering · GPA 3.76
+            </p>
+
+            <p>
+              Minors in Data Science and Statistics · Expected May 2029
+            </p>
+          </div>
+        </div>
+
+        <h3 class="subheading">Relevant coursework</h3>
+
+        <div class="tags course-tags">
+          <button data-course="digital">Digital Logic</button>
+          <button data-course="circuits">Circuit Analysis</button>
+          <button data-course="python">Python</button>
+          <button data-course="cpp">C/C++</button>
+          <button data-course="statistics">Statistics</button>
+          <button data-course="microelectronics">Microelectronics</button>
+          <button data-course="datascience">Data Science</button>
+          <button data-course="microcontrollers">Microcontrollers</button>
+          <button data-course="oop">OOP</button>
+        </div>
+      </article>
+
+      <article class="glass panel honors reveal">
+        <p class="marker">(h) Honors</p>
+
+        <h2>Recognition</h2>
+
+        <div>
+          <strong>Alpha Lambda Delta</strong>
+          <span>Honor Society · 2026</span>
+        </div>
+
+        <div>
+          <strong>National Honor Society</strong>
+          <span>Member · 2025</span>
+        </div>
+      </article>
+    </section>
+
+    <section id="leadership" class="section-anchor">
+      <div class="section-heading reveal">
+        <p class="marker">(i) Leadership</p>
+        <h2>Contributing beyond the classroom.</h2>
+      </div>
+
+      <div class="leadership-grid">
+        <article class="glass panel leadership-card reveal">
+          <div class="card-head">
+            <span>01</span>
+
+            <img
+              class="logo"
+              src="assets/SAB_Logo.png"
+              alt="Dean’s Student Advisory Board logo"
+            >
+          </div>
+
+          <h3>Dean’s Student Advisory Board</h3>
+
+          <p class="organization">
+            Board Member · Aug 2025–Present
+          </p>
+
+          <p>
+            Representing engineering students in conversations with college
+            leadership.
+          </p>
+        </article>
+
+        <article class="glass panel leadership-card reveal">
+          <div class="card-head">
+            <span>02</span>
+
+            <img
+              class="logo"
+              src="assets/SCETA_Logo.png"
+              alt="SCETA logo"
+            >
+          </div>
+
+          <h3>
+            Southern California Engineering Technology Association
+          </h3>
+
+          <p class="organization">
+            Executive Board Treasurer · Aug 2026–Present
+          </p>
+
+          <p>
+            Supporting the CPP chapter through financial stewardship and
+            executive-board collaboration.
+          </p>
+        </article>
+
+        <article class="glass panel leadership-card reveal">
+          <div class="card-head">
+            <span>03</span>
+
+            <img
+              class="logo"
+              src="assets/EWB_Logo.png"
+              alt="Engineers Without Borders logo"
+            >
+          </div>
+
+          <h3>Engineers Without Borders</h3>
+
+          <p class="organization">
+            Executive Board Treasurer · Aug 2025–May 2026
+          </p>
+
+          <p>
+            Managed $5,000+ across university and donation accounts and
+            partnered on service initiatives.
+          </p>
+        </article>
+      </div>
+    </section>
+
+    <section id="contact" class="glass contact section-anchor reveal">
+      <div class="contact-image">
+        <img
+          src="assets/boyadjian_david.jpg"
+          alt="David Boyadjian at Cal Poly Pomona"
+        >
+      </div>
+
+      <div class="contact-copy">
+        <p class="marker">(j) Contact</p>
+
+        <h2>Let’s build something that matters.</h2>
+
+        <p>
+          I’m open to internships, research collaborations, and engineering
+          projects involving machine learning, predictive modeling, digital
+          engineering, and AI-enabled embedded systems.
+        </p>
+
+        <div class="contact-actions">
+          <a class="button primary" href="mailto:dboyadjian@cpp.edu">
+            dboyadjian@cpp.edu <span>↗</span>
+          </a>
+
+          <a class="button secondary" href="tel:+18187513885">
+            (818) 751-3885
           </a>
         </div>
 
-        <div class="quick-contacts">
-          <a href="mailto:dboyadjian@cpp.edu">
-            dboyadjian@cpp.edu
-          </a>
-
+        <div class="socials">
           <a
             href="https://www.linkedin.com/in/david-boyadjian"
             target="_blank"
@@ -127,810 +593,45 @@
           >
             GitHub ↗
           </a>
-        </div>
-      </div>
-
-      <div class="hero-visual reveal" aria-label="Portrait and profile details">
-        <div class="portrait-frame">
-          <img
-            class="avatar"
-            src="assets/david_02.jpg"
-            alt="David Boyadjian"
-          />
-
-          <div class="portrait-label">
-            <span>Computer Engineering</span>
-            <small>Pomona, California</small>
-          </div>
-        </div>
-
-        <div class="orbit-card card-a">
-          <strong>STM32</strong>
-          <span>Firmware + control</span>
-        </div>
-
-        <div class="orbit-card card-b">
-          <strong>AI / ML</strong>
-          <span>Engineering systems</span>
-        </div>
-      </div>
-    </section>
-
-    <!-- Highlights -->
-    <section class="proof-strip" aria-label="Profile highlights">
-      <div class="container proof-grid">
-        <div>
-          <strong>30K+</strong>
-          <span>customer records analyzed</span>
-        </div>
-
-        <div>
-          <strong>2</strong>
-          <span>minors: data science + statistics</span>
-        </div>
-
-        <div>
-          <strong>3</strong>
-          <span>languages spoken</span>
-        </div>
-
-        <div>
-          <strong>May 2029</strong>
-          <span>expected graduation</span>
-        </div>
-      </div>
-    </section>
-
-    <!-- About -->
-    <section id="about" class="section">
-      <div class="container split-intro">
-        <div class="section-heading reveal">
-          <p class="kicker">01 / About</p>
-
-          <h2>
-            Engineering systems that connect the physical and digital worlds.
-          </h2>
-        </div>
-
-        <div class="about-copy reveal">
-          <p>
-            I’m pursuing a B.S. in Computer Engineering with two minors:
-            Data Science and Statistics. Through research and hands-on
-            engineering, I’m building a multidisciplinary foundation across
-            firmware, circuits, machine learning, statistical modeling,
-            databases, and digital engineering.
-          </p>
-
-          <p>
-            I’m especially interested in the future of intelligent technology:
-            local LLMs, retrieval-augmented generation, predictive models, and
-            AI-enabled embedded systems. My goal is to develop reliable systems
-            for aerospace, defense, robotics, and other high-impact engineering
-            environments.
-          </p>
-
-          <div class="principles">
-            <span>Build hands-on</span>
-            <span>Think across disciplines</span>
-            <span>Design for real users</span>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- Experience -->
-    <section id="experience" class="section alt">
-      <div class="container">
-        <div class="section-heading reveal">
-          <p class="kicker">02 / Experience</p>
-
-          <h2>
-            Research, technical, and professional experience
-          </h2>
-        </div>
-
-        <div class="timeline">
-          <!-- Undergraduate Research -->
-          <article class="timeline-item reveal">
-            <div class="timeline-date">
-              May 2026–Present
-            </div>
-
-            <div class="timeline-body">
-              <div class="title-row">
-                <div class="org-title">
-                  <img
-                    class="org-logo"
-                    src="assets/CPPENG_Logo.png"
-                    alt="Cal Poly Pomona College of Engineering logo"
-                  />
-
-                  <div>
-                    <h3>
-                      Undergraduate Research — Digital Systems Engineering
-                    </h3>
-
-                    <p class="org">
-                      Exploration and Space Technologies · Digital Engineering Lab
-                    </p>
-                  </div>
-                </div>
-
-                <span class="role-type">
-                  AI + Digital Engineering
-                </span>
-              </div>
-
-              <ul>
-                <li>
-                  Helping launch the Digital Engineering Lab and its applied
-                  research workflow across artificial intelligence,
-                  computer-aided design, 3D scanning, and additive manufacturing.
-                </li>
-
-                <li>
-                  Preparing to deploy a local LLM and retrieval-augmented
-                  generation pipeline on Apple Silicon using MLX-LM.
-                </li>
-
-                <li>
-                  Developing a workflow for generating engineering-informed CAD
-                  modifications that can be validated through 3D scanning and
-                  FDM 3D printing.
-                </li>
-              </ul>
-
-              <div class="tags">
-                <span>MLX-LM</span>
-                <span>LLM</span>
-                <span>RAG</span>
-                <span>Apple Silicon</span>
-                <span>CAD</span>
-                <span>3D Scanning</span>
-                <span>Additive Manufacturing</span>
-              </div>
-            </div>
-          </article>
-
-          <!-- Northrop Grumman Project -->
-          <article class="timeline-item reveal">
-            <div class="timeline-date">
-              Aug 2026–Present
-            </div>
-
-            <div class="timeline-body">
-              <div class="title-row">
-                <div class="org-title">
-                  <img
-                    class="org-logo"
-                    src="assets/NGCP_Logo.png"
-                    alt="Northrop Grumman Collaboration Project logo"
-                  />
-
-                  <div>
-                    <h3>
-                      Northrop Grumman Collaboration Project
-                    </h3>
-
-                    <p class="org">
-                      Unmanned Ground Vehicle · Firmware Subteam
-                    </p>
-                  </div>
-                </div>
-
-                <span class="role-type">
-                  Embedded Firmware
-                </span>
-              </div>
-
-              <ul>
-                <li>
-                  Contributing to STM32 embedded firmware development for a
-                  Northrop Grumman-sponsored autonomous emergency-response
-                  vehicle.
-                </li>
-
-                <li>
-                  Serving as a liaison between firmware, autonomy, and
-                  integration subteams to strengthen communication and
-                  coordination across the software team.
-                </li>
-              </ul>
-
-              <div class="tags">
-                <span>STM32</span>
-                <span>Embedded C</span>
-                <span>Firmware</span>
-                <span>PWM</span>
-                <span>GPIO</span>
-                <span>Cross-Team Integration</span>
-              </div>
-            </div>
-          </article>
-
-          <!-- Athens Services -->
-          <article class="timeline-item reveal">
-            <div class="timeline-date">
-              Jun–Aug 2025
-            </div>
-
-            <div class="timeline-body">
-              <div class="title-row">
-                <div class="org-title">
-                  <img
-                    class="org-logo"
-                    src="assets/ATHENS_Logo.png"
-                    alt="Athens Services logo"
-                  />
-
-                  <div>
-                    <h3>Data Analyst Intern</h3>
-
-                    <p class="org">
-                      Arakelian Enterprises Inc. · Athens Services · Pacoima, CA
-                    </p>
-                  </div>
-                </div>
-
-                <span class="role-type">
-                  Data + Automation
-                </span>
-              </div>
-
-              <ul>
-                <li>
-                  Queried, joined, cleaned, and validated databases containing
-                  more than 30,000 customer records across Ventura and Orange
-                  County using SQL Server Management Studio.
-                </li>
-
-                <li>
-                  Improved operational workflows through Salesforce Field
-                  Service and AppSheet application updates.
-                </li>
-
-                <li>
-                  Assisted with Tableau dashboards that translated queried data
-                  into actionable insights.
-                </li>
-
-                <li>
-                  Participated in developing an AI-powered database with a
-                  custom UI while gaining exposure to UI/UX and full-stack
-                  development through Flynet Studios.
-                </li>
-              </ul>
-
-              <div class="tags">
-                <span>SQL</span>
-                <span>SSMS</span>
-                <span>Salesforce</span>
-                <span>AppSheet</span>
-                <span>Tableau</span>
-              </div>
-            </div>
-          </article>
-        </div>
-      </div>
-    </section>
-
-    <!-- Projects -->
-    <section id="projects" class="section">
-      <div class="container">
-        <div class="section-heading projects-heading reveal">
-          <div>
-            <p class="kicker">03 / Projects</p>
-            <h2>Selected engineering work</h2>
-          </div>
-
-          <p>
-            Projects that reflect how I learn: identify a real need, build the
-            system, and iterate until it works.
-          </p>
-        </div>
-
-        <div class="project-grid">
-          <!-- UGV Firmware -->
-          <article class="project-card featured reveal">
-            <div class="project-number">01</div>
-
-            <div class="project-content">
-              <p class="project-state">
-                <span></span>
-                Active build
-              </p>
-
-              <h3>Northrop Grumman UGV Firmware</h3>
-
-              <p>
-                Contributing to the firmware of a Northrop Grumman-sponsored
-                autonomous emergency-response vehicle. Current embedded work
-                includes modular STM32 control using PWM output, GPIO direction
-                logic, and reusable motor and servo interfaces, alongside
-                coordination between firmware, autonomy, and integration teams.
-              </p>
-
-              <div class="tags">
-                <span>Embedded C</span>
-                <span>STM32 HAL</span>
-                <span>PWM</span>
-                <span>GPIO</span>
-                <span>Firmware</span>
-              </div>
-            </div>
-
-            <div class="project-code" aria-hidden="true">
-              <span>motor-&gt;htim</span>
-              <span>HAL_TIM_PWM_Start()</span>
-              <span>GPIO_PIN_14</span>
-              <span>velocity &gt; 0</span>
-            </div>
-          </article>
-
-          <!-- Event Management App -->
-          <article class="project-card reveal">
-            <div class="project-number">02</div>
-
-            <div class="project-content">
-              <p class="project-state complete">
-                <span></span>
-                Deployed
-              </p>
-
-              <h3>Engineering Event Management System</h3>
-
-              <p>
-                AI-assisted, designed, and deployed a full-stack dashboard with
-                event tracking, multi-select audience management, advanced
-                filtering and sorting, CSV exports, logistics planning, and
-                real-time CRUD operations for College of Engineering events.
-              </p>
-
-              <div class="tags">
-                <span>React</span>
-                <span>TypeScript</span>
-                <span>Node.js</span>
-                <span>Express</span>
-                <span>PostgreSQL</span>
-                <span>Neon</span>
-                <span>Vercel</span>
-                <span>Render</span>
-                <span>REST API</span>
-              </div>
-            </div>
-          </article>
-
-          <!-- Portfolio -->
-          <article class="project-card reveal">
-            <div class="project-number">03</div>
-
-            <div class="project-content">
-              <p class="project-state complete">
-                <span></span>
-                Live
-              </p>
-
-              <h3>Personal Portfolio</h3>
-
-              <p>
-                Built and deployed an AI-assisted responsive portfolio through
-                GitHub Pages using HTML, CSS, and JavaScript to visualize my
-                work across computer engineering, research, software, and data.
-              </p>
-
-              <div class="tags">
-                <span>HTML</span>
-                <span>CSS</span>
-                <span>JavaScript</span>
-                <span>GitHub Pages</span>
-              </div>
-            </div>
-          </article>
-        </div>
-      </div>
-    </section>
-
-    <!-- Education -->
-    <section id="education" class="section alt">
-      <div class="container education-grid">
-        <div class="section-heading reveal">
-          <p class="kicker">04 / Education</p>
-
-          <h2>
-            Built on engineering fundamentals.
-          </h2>
-
-          <p class="section-summary">
-            A deliberately interdisciplinary path across hardware, software,
-            mathematics, and statistics.
-          </p>
-        </div>
-
-        <article class="education-card reveal">
-          <div class="education-logo">
-            <img
-              src="assets/CPP_Logo.png"
-              alt="Cal Poly Pomona logo"
-            />
-          </div>
-
-          <div>
-            <p class="date">
-              August 2025–Expected May 2029 · GPA 3.76
-            </p>
-
-            <h3>
-              California State Polytechnic University, Pomona
-            </h3>
-
-            <p class="degree">
-              Bachelor of Science in Computer Engineering<br />
-              Minor in Data Science · Minor in Statistics
-            </p>
-          </div>
-
-          <div class="coursework">
-            <h4>Relevant coursework</h4>
-
-            <div class="tags coursework-tags">
-              <button
-                class="tag-button"
-                data-course="digital"
-                type="button"
-              >
-                Digital Logic Design
-              </button>
-
-              <button
-                class="tag-button"
-                data-course="circuits"
-                type="button"
-              >
-                Circuit Analysis
-              </button>
-
-              <button
-                class="tag-button"
-                data-course="python"
-                type="button"
-              >
-                Python
-              </button>
-
-              <button
-                class="tag-button"
-                data-course="cpp"
-                type="button"
-              >
-                C/C++
-              </button>
-
-              <button
-                class="tag-button"
-                data-course="statistics"
-                type="button"
-              >
-                Statistics
-              </button>
-
-              <button
-                class="tag-button"
-                data-course="microelectronics"
-                type="button"
-              >
-                Microelectronics
-              </button>
-
-              <button
-                class="tag-button"
-                data-course="datascience"
-                type="button"
-              >
-                Fundamentals of Data Science
-              </button>
-
-              <button
-                class="tag-button"
-                data-course="microcontrollers"
-                type="button"
-              >
-                Microcontrollers
-              </button>
-
-              <button
-                class="tag-button"
-                data-course="oop"
-                type="button"
-              >
-                Object-Oriented Programming
-              </button>
-            </div>
-          </div>
-        </article>
-      </div>
-    </section>
-
-    <!-- Leadership -->
-    <section id="leadership" class="section">
-      <div class="container">
-        <div class="section-heading reveal">
-          <p class="kicker">05 / Leadership</p>
-          <h2>Contributing beyond the classroom</h2>
-        </div>
-
-        <div class="leadership-grid">
-          <article class="leadership-card reveal">
-            <div class="leadership-top">
-              <span class="card-index">A</span>
-
-              <img
-                class="leadership-logo"
-                src="assets/SAB_Logo.png"
-                alt="Dean’s Student Advisory Board logo"
-              />
-            </div>
-
-            <h3>Dean’s Student Advisory Board</h3>
-
-            <p class="org">
-              Board Member · Aug 2025–Present
-            </p>
-
-            <p>
-              Representing engineering students in direct conversations with
-              college leadership and helping strengthen communication across
-              the College of Engineering community.
-            </p>
-          </article>
-
-          <article class="leadership-card reveal">
-            <div class="leadership-top">
-              <span class="card-index">B</span>
-
-              <img
-                class="leadership-logo"
-                src="assets/SCETA_Logo.png"
-                alt="Southern California Engineering Technology Association logo"
-              />
-            </div>
-
-            <h3>
-              Southern California Engineering Technology Association
-            </h3>
-
-            <p class="org">
-              Executive Board Treasurer · Aug 2026–Present
-            </p>
-
-            <p>
-              Supporting the Cal Poly Pomona chapter through financial
-              stewardship, executive-board collaboration, and student
-              engineering activities.
-            </p>
-          </article>
-
-          <article class="leadership-card reveal">
-            <div class="leadership-top">
-              <span class="card-index">C</span>
-
-              <img
-                class="leadership-logo"
-                src="assets/EWB_Logo.png"
-                alt="Engineers Without Borders logo"
-              />
-            </div>
-
-            <h3>Engineers Without Borders</h3>
-
-            <p class="org">
-              Executive Board Treasurer · Aug 2025–May 2026
-            </p>
-
-            <p>
-              Managed more than $5,000 across university and donation accounts,
-              prepared budgets, processed disbursements, and partnered with the
-              executive board on events and community-service initiatives.
-            </p>
-          </article>
-        </div>
-
-        <div class="honors reveal">
-          <p class="kicker">Honors</p>
-
-          <div class="tags">
-            <span>National Honor Society · 2025</span>
-            <span>Alpha Lambda Delta Honor Society · 2026</span>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- Skills -->
-    <section id="skills" class="section alt">
-      <div class="container skills-layout">
-        <div class="section-heading reveal">
-          <p class="kicker">06 / Toolkit</p>
-
-          <h2>
-            Technical range with an embedded core.
-          </h2>
-        </div>
-
-        <div class="skill-groups reveal">
-          <div>
-            <h3>Programming &amp; software</h3>
-
-            <p>
-              Python · SQL · SSMS · Tableau · HTML · CSS · JavaScript ·
-              TypeScript · React · Node.js · PostgreSQL
-            </p>
-          </div>
-
-          <div>
-            <h3>AI, embedded &amp; engineering</h3>
-
-            <p>
-              MLX-LM · RAG · LLM · STM32 · embedded firmware · LTspice ·
-              Autodesk Fusion 360 · CAD · 3D scanning · FDM 3D printing
-            </p>
-          </div>
-
-          <div>
-            <h3>Tools &amp; platforms</h3>
-
-            <p>
-              Git · GitHub · VS Code · Vercel · Render · Neon PostgreSQL ·
-              Express.js · REST APIs · Salesforce · AppSheet · Microsoft Office
-            </p>
-          </div>
-
-          <div>
-            <h3>Strengths &amp; languages</h3>
-
-            <p>
-              Discipline · communication · time management · work ethic ·
-              English · Armenian · Russian
-            </p>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- Closing Profile -->
-    <section class="closing-profile section">
-      <div class="container closing-grid reveal">
-        <div class="closing-photo-wrap">
-          <img
-            class="closing-photo"
-            src="assets/boyadjian_david.jpg"
-            alt="David Boyadjian at Cal Poly Pomona"
-          />
-        </div>
-
-        <div class="closing-copy">
-          <p class="kicker">Building forward</p>
-
-          <h2>
-            Curious across disciplines. Focused on real engineering impact.
-          </h2>
-
-          <p>
-            From embedded firmware and autonomous systems to local AI, digital
-            engineering, and full-stack tools, I’m building the range to turn
-            ambitious technical ideas into working systems.
-          </p>
 
           <a
-            class="btn btn-primary"
             href="assets/David%20Boyadjian%20Resume%20-%20Summer%202027.pdf"
             download
           >
-            Download my résumé
+            Summer 2027 résumé ↓
           </a>
         </div>
       </div>
     </section>
   </main>
 
-  <!-- Contact -->
-  <footer id="contact" class="footer">
-    <div class="container footer-main reveal">
-      <p class="kicker">07 / Contact</p>
-
-      <h2>
-        Let’s build something that matters.
-      </h2>
-
-      <p>
-        I’m open to internships, research collaborations, and engineering
-        projects involving machine learning, statistical predictive modeling,
-        digital engineering, and AI-embedded systems.
-      </p>
-
-      <a
-        class="email-link"
-        href="mailto:dboyadjian@cpp.edu"
-      >
-        dboyadjian@cpp.edu <span aria-hidden="true">↗</span>
-      </a>
-
-      <p class="contact-phone">
-        <a href="tel:+18187513885">
-          (818) 751-3885
-        </a>
-      </p>
-    </div>
-
-    <div class="container footer-bottom">
-      <span>
-        © <span id="year"></span> David Boyadjian
-      </span>
-
-      <div>
-        <a
-          href="assets/David%20Boyadjian%20Resume%20-%20Summer%202027.pdf"
-          download
-        >
-          Résumé
-        </a>
-
-        <a
-          href="https://www.linkedin.com/in/david-boyadjian"
-          target="_blank"
-          rel="noopener"
-        >
-          LinkedIn
-        </a>
-
-        <a
-          href="https://github.com/DavidBoyadjian"
-          target="_blank"
-          rel="noopener"
-        >
-          GitHub
-        </a>
-
-        <a href="#hero">
-          Back to top ↑
-        </a>
-      </div>
-    </div>
+  <footer class="shell glass footer">
+    <a class="brand" href="#hero">D<span>.</span>BOYADJIAN</a>
+    <p>Embedded · Digital · Data</p>
+    <p>© <span id="year"></span> David Boyadjian</p>
   </footer>
 
-  <!-- Course Modal -->
-  <div
-    class="course-modal"
-    id="courseModal"
-    aria-hidden="true"
-  >
-    <div
-      class="course-modal-backdrop"
-      id="courseModalBackdrop"
-    ></div>
+  <div class="course-modal" id="courseModal" aria-hidden="true">
+    <div class="course-modal-backdrop" data-close-modal></div>
 
     <div
-      class="course-modal-content"
+      class="glass modal-card"
       role="dialog"
       aria-modal="true"
       aria-labelledby="courseModalTitle"
       tabindex="-1"
     >
       <button
-        class="course-modal-close"
-        id="courseModalClose"
+        class="modal-close"
         type="button"
+        data-close-modal
         aria-label="Close course details"
       >
         ×
       </button>
 
-      <p
-        class="course-modal-code"
-        id="courseModalCode"
-      ></p>
-
-      <h3 id="courseModalTitle"></h3>
-
+      <p class="marker" id="courseModalCode"></p>
+      <h2 id="courseModalTitle"></h2>
       <p id="courseModalDescription"></p>
     </div>
   </div>
