@@ -40,7 +40,7 @@ menuBtn?.addEventListener("click", () => {
   );
 });
 
-// Smooth scrolling
+// Smooth scrolling with easing tuned to match the glass motion language
 document
   .querySelectorAll('a[href^="#"]')
   .forEach((anchor) => {
@@ -57,7 +57,7 @@ document
       const top =
         target.getBoundingClientRect().top +
         window.scrollY -
-        75;
+        90;
 
       window.scrollTo({
         top,
@@ -73,33 +73,41 @@ document
     });
   });
 
-// Header styling while scrolling
+// Header depth increases subtly once the page scrolls, via rAF for smoothness
+let lastScrollState = false;
+
+function updateHeaderState() {
+  const scrolled = window.scrollY > 12;
+
+  if (scrolled !== lastScrollState) {
+    header?.classList.toggle("scrolled", scrolled);
+    lastScrollState = scrolled;
+  }
+}
+
 window.addEventListener(
   "scroll",
-  () => {
-    header?.classList.toggle(
-      "scrolled",
-      window.scrollY > 12
-    );
-  },
-  {
-    passive: true,
-  }
+  () => window.requestAnimationFrame(updateHeaderState),
+  { passive: true }
 );
 
-// Reveal elements while scrolling
+// Reveal elements while scrolling, staggering nearby items slightly
+// so groups of cards settle in as one gesture rather than popping in.
 if ("IntersectionObserver" in window) {
   const observer = new IntersectionObserver(
     (entries) => {
-      entries.forEach((entry) => {
+      entries.forEach((entry, index) => {
         if (entry.isIntersecting) {
+          const delay = Math.min(index * 60, 240);
+          entry.target.style.transitionDelay = `${delay}ms`;
           entry.target.classList.add("visible");
           observer.unobserve(entry.target);
         }
       });
     },
     {
-      threshold: 0.1,
+      threshold: 0.12,
+      rootMargin: "0px 0px -40px 0px",
     }
   );
 
