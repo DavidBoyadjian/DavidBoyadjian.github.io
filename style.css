@@ -216,8 +216,7 @@ img {
   text-transform: uppercase;
 }
 
-/* Change .webrow to .eyebrow */
-.eyebrow {
+.webrow {
   display: flex;
   align-items: center;
   gap: 0.65rem;
@@ -462,9 +461,10 @@ img {
 }
 
 /* About */
+
 .split-intro {
   display: grid;
-  grid-template-columns: 1.1fr 0.9fr;
+  grid-template-columns: 1.1fr 0.9frfrfr;
   gap: 8vw;
 }
 
@@ -1069,6 +1069,10 @@ img {
     border-radius: 15px;
     background: hsl(var(--card));
     box-shadow: var(--shadow);
+  }
+
+ .button {
+    display: none;
   }
 
   .links.open {
