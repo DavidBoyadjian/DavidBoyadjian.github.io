@@ -1,149 +1,233 @@
-// Theme: load saved preference, default dark if preferred
+// Load the saved theme or use the device preference
 (function initTheme() {
   const saved = localStorage.getItem("theme");
-  const prefersDark = window.matchMedia("(prefers-color-scheme: dark)").matches;
+  const prefersDark = window.matchMedia(
+    "(prefers-color-scheme: dark)"
+  ).matches;
+
   const dark = saved ? saved === "dark" : prefersDark;
+
   document.documentElement.classList.toggle("dark", dark);
 })();
 
 const themeBtn = document.getElementById("themeBtn");
 const menuBtn = document.querySelector(".menu-toggle");
 const links = document.querySelector(".links");
-const header = document.querySelector("header");
+const header = document.querySelector(".site-header");
 
-if (themeBtn) {
-  themeBtn.addEventListener("click", () => {
-    const nowDark = !document.documentElement.classList.contains("dark");
-    document.documentElement.classList.toggle("dark", nowDark);
-    localStorage.setItem("theme", nowDark ? "dark" : "light");
-  });
-}
+// Theme toggle
+themeBtn?.addEventListener("click", () => {
+  const dark = !document.documentElement.classList.contains("dark");
 
-// Mobile menu
-if (menuBtn && links) {
-  menuBtn.addEventListener("click", () => {
-    const open = links.classList.toggle("open");
-    menuBtn.setAttribute("aria-expanded", String(open));
-  });
-}
+  document.documentElement.classList.toggle("dark", dark);
+  localStorage.setItem("theme", dark ? "dark" : "light");
+});
 
-// Smooth scroll for in-page links
-document.querySelectorAll('a[href^="#"]').forEach((a) => {
-  a.addEventListener("click", (e) => {
-    const id = a.getAttribute("href").slice(1);
-    const el = document.getElementById(id);
-    if (!el) return;
+// Mobile navigation
+menuBtn?.addEventListener("click", () => {
+  const open = links?.classList.toggle("open") ?? false;
 
-    e.preventDefault();
+  menuBtn.setAttribute("aria-expanded", String(open));
+});
 
-    const headerOffset = 85;
-    const elementPosition = el.getBoundingClientRect().top + window.pageYOffset;
-    const offsetPosition = elementPosition - headerOffset;
+// Smooth scrolling
+document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
+  anchor.addEventListener("click", (event) => {
+    const href = anchor.getAttribute("href");
+    const target = document.querySelector(href);
+
+    if (!target) {
+      return;
+    }
+
+    event.preventDefault();
+
+    const top =
+      target.getBoundingClientRect().top +
+      window.scrollY -
+      75;
 
     window.scrollTo({
-      top: offsetPosition,
+      top,
       behavior: "smooth",
     });
 
-    if (links && menuBtn) {
-      links.classList.remove("open");
-      menuBtn.setAttribute("aria-expanded", "false");
-    }
+    links?.classList.remove("open");
+    menuBtn?.setAttribute("aria-expanded", "false");
   });
 });
 
-// Fixed header styling on scroll
-if (header) {
-  window.addEventListener("scroll", () => {
-    const scrolled = window.scrollY > 8;
-    header.style.background = scrolled ? "hsl(var(--bg) / 0.85)" : "hsl(var(--bg) / 0.8)";
-    header.style.backdropFilter = "blur(12px)";
-    header.style.borderBottom = "1px solid hsl(var(--border))";
+// Header styling while scrolling
+window.addEventListener(
+  "scroll",
+  () => {
+    header?.classList.toggle(
+      "scrolled",
+      window.scrollY > 12
+    );
+  },
+  { passive: true }
+);
+
+// Reveal elements while scrolling
+if ("IntersectionObserver" in window) {
+  const observer = new IntersectionObserver(
+    (entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add("visible");
+          observer.unobserve(entry.target);
+        }
+      });
+    },
+    {
+      threshold: 0.1,
+    }
+  );
+
+  document.querySelectorAll(".reveal").forEach((element) => {
+    observer.observe(element);
+  });
+} else {
+  document.querySelectorAll(".reveal").forEach((element) => {
+    element.classList.add("visible");
   });
 }
 
-// Reveal on scroll
-const observer = new IntersectionObserver(
-  (entries) => {
-    entries.forEach((entry) => {
-      if (entry.isIntersecting) {
-        entry.target.classList.add("visible");
-      }
-    });
-  },
-  { threshold: 0.12 }
-);
-
-document.querySelectorAll(".reveal").forEach((el) => observer.observe(el));
-
-// Course modal
+// Course information
 const courseData = {
-  python: {
-    code: "CS1260",
-    title: "Python",
+  digital: {
+    code: "ECE 2300/L",
+    title: "Digital Logic Design",
     description:
-      "Basic concepts of computer software and programming. Numbers, strings, and basic I/O. Expressions, control structures, lists, tuples, and functions. File I/O and introduction to exception handling. Introduction to object-oriented programming. Problem-solving techniques."
+      "Combinational and sequential logic, Boolean algebra, digital design methods, and laboratory implementation.",
   },
-  circuit: {
-    code: "ECE1101",
-    title: "Circuit Analysis I",
+
+  circuits: {
+    code: "ECE 1101/L",
+    title: "Electrical Circuit Analysis I",
     description:
-      "Introduction to the fundamental laws of electric circuits, applications to circuit analysis, matrix methods. An introduction to circuit analysis in the time domain using differential equations with computer tools. Selected laboratory experiments emphasizing the supporting the topics covered in ECE 1101."
-  }
+      "Fundamental circuit laws, time-domain analysis, differential-equation methods, computer tools, and supporting laboratory experiments.",
+  },
+
+  python: {
+    code: "CS 1260",
+    title: "Python Programming",
+    description:
+      "Problem solving with Python using expressions, control structures, data collections, functions, file I/O, exceptions, and object-oriented programming.",
+  },
+
+  linear: {
+    code: "MAT 2240",
+    title: "Linear Algebra",
+    description:
+      "Vectors, matrices, systems of linear equations, linear transformations, eigenvalues, and engineering applications.",
+  },
+
+  statistics: {
+    code: "STA 2260",
+    title: "Statistics",
+    description:
+      "Statistical reasoning, probability-based analysis, estimation, inference, and interpretation of real data.",
+  },
+
+  physics: {
+    code: "PHY 1510/L · PHY 1520/L",
+    title: "Engineering Physics",
+    description:
+      "Calculus-based mechanics, electricity and magnetism, and experimental laboratory work for engineering applications.",
+  },
 };
 
-const courseModal = document.getElementById("courseModal");
-const courseModalBackdrop = document.getElementById("courseModalBackdrop");
-const courseModalClose = document.getElementById("courseModalClose");
-const courseModalCode = document.getElementById("courseModalCode");
-const courseModalTitle = document.getElementById("courseModalTitle");
-const courseModalDescription = document.getElementById("courseModalDescription");
+// Course modal elements
+const modal = document.getElementById("courseModal");
+const modalPanel = modal?.querySelector(
+  ".course-modal-content"
+);
+const modalCode = document.getElementById(
+  "courseModalCode"
+);
+const modalTitle = document.getElementById(
+  "courseModalTitle"
+);
+const modalDescription = document.getElementById(
+  "courseModalDescription"
+);
 
+let lastFocused = null;
+
+// Open course modal
 function openCourseModal(courseKey) {
-  if (!courseModal || !courseModalCode || !courseModalTitle || !courseModalDescription) return;
-
   const course = courseData[courseKey];
-  if (!course) return;
 
-  courseModalCode.textContent = course.code;
-  courseModalTitle.textContent = course.title;
-  courseModalDescription.textContent = course.description;
+  if (
+    !course ||
+    !modal ||
+    !modalCode ||
+    !modalTitle ||
+    !modalDescription
+  ) {
+    return;
+  }
 
-  courseModal.classList.add("open");
-  courseModal.setAttribute("aria-hidden", "false");
+  lastFocused = document.activeElement;
+
+  modalCode.textContent = course.code;
+  modalTitle.textContent = course.title;
+  modalDescription.textContent = course.description;
+
+  modal.classList.add("open");
+  modal.setAttribute("aria-hidden", "false");
+
   document.body.style.overflow = "hidden";
+
+  modalPanel?.focus();
 }
 
+// Close course modal
 function closeCourseModal() {
-  if (!courseModal) return;
+  if (!modal) {
+    return;
+  }
 
-  courseModal.classList.remove("open");
-  courseModal.setAttribute("aria-hidden", "true");
+  modal.classList.remove("open");
+  modal.setAttribute("aria-hidden", "true");
+
   document.body.style.overflow = "";
+
+  lastFocused?.focus();
 }
 
+// Course buttons
 document.querySelectorAll(".tag-button").forEach((button) => {
   button.addEventListener("click", () => {
     openCourseModal(button.dataset.course);
   });
 });
 
-if (courseModalClose) {
-  courseModalClose.addEventListener("click", closeCourseModal);
-}
+// Modal close button
+document
+  .getElementById("courseModalClose")
+  ?.addEventListener("click", closeCourseModal);
 
-if (courseModalBackdrop) {
-  courseModalBackdrop.addEventListener("click", closeCourseModal);
-}
+// Modal backdrop
+document
+  .getElementById("courseModalBackdrop")
+  ?.addEventListener("click", closeCourseModal);
 
-document.addEventListener("keydown", (e) => {
-  if (e.key === "Escape" && courseModal && courseModal.classList.contains("open")) {
+// Close modal using Escape
+document.addEventListener("keydown", (event) => {
+  if (
+    event.key === "Escape" &&
+    modal?.classList.contains("open")
+  ) {
     closeCourseModal();
   }
 });
 
-// Footer year
-const yearEl = document.getElementById("year");
-if (yearEl) {
-  yearEl.textContent = new Date().getFullYear();
+// Automatically update the footer year
+const yearElement = document.getElementById("year");
+
+if (yearElement) {
+  yearElement.textContent = new Date().getFullYear();
 }
