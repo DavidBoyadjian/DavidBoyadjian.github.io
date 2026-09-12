@@ -1,208 +1,211 @@
-const root = document.documentElement;
-const themeButton = document.getElementById("themeBtn");
-const menuButton = document.querySelector(".menu-toggle");
-const navLinks = document.querySelector(".nav-links");
+// Load the saved theme or use the device preference
+(function initTheme() {
+  const saved = localStorage.getItem("theme");
+
+  const prefersDark = window.matchMedia(
+    "(prefers-color-scheme: dark)"
+  ).matches;
+
+  const dark = saved ? saved === "dark" : prefersDark;
+
+  document.documentElement.classList.toggle("dark", dark);
+})();
+
+const themeBtn = document.getElementById("themeBtn");
+const menuBtn = document.querySelector(".menu-toggle");
+const links = document.querySelector(".links");
 const header = document.querySelector(".site-header");
-const progress = document.getElementById("scrollProgress");
 
-themeButton?.addEventListener("click", () => {
-  const dark = !root.classList.contains("dark");
+// Theme toggle
+themeBtn?.addEventListener("click", () => {
+  const dark =
+    !document.documentElement.classList.contains("dark");
 
-  root.classList.toggle("dark", dark);
-  localStorage.setItem("theme", dark ? "dark" : "light");
+  document.documentElement.classList.toggle("dark", dark);
+
+  localStorage.setItem(
+    "theme",
+    dark ? "dark" : "light"
+  );
 });
 
-menuButton?.addEventListener("click", () => {
-  const open = navLinks?.classList.toggle("open") ?? false;
+// Mobile navigation
+menuBtn?.addEventListener("click", () => {
+  const open =
+    links?.classList.toggle("open") ?? false;
 
-  menuButton.setAttribute("aria-expanded", String(open));
+  menuBtn.setAttribute(
+    "aria-expanded",
+    String(open)
+  );
 });
 
-document.querySelectorAll('a[href^="#"]').forEach((link) => {
-  link.addEventListener("click", (event) => {
-    const selector = link.getAttribute("href");
-    const target =
-      selector === "#" ? null : document.querySelector(selector);
+// Smooth scrolling
+document
+  .querySelectorAll('a[href^="#"]')
+  .forEach((anchor) => {
+    anchor.addEventListener("click", (event) => {
+      const href = anchor.getAttribute("href");
+      const target = document.querySelector(href);
 
-    if (!target) return;
+      if (!target) {
+        return;
+      }
 
-    event.preventDefault();
+      event.preventDefault();
 
-    target.scrollIntoView({
-      behavior: "smooth",
-      block: "start",
+      const top =
+        target.getBoundingClientRect().top +
+        window.scrollY -
+        75;
+
+      window.scrollTo({
+        top,
+        behavior: "smooth",
+      });
+
+      links?.classList.remove("open");
+
+      menuBtn?.setAttribute(
+        "aria-expanded",
+        "false"
+      );
     });
-
-    navLinks?.classList.remove("open");
-    menuButton?.setAttribute("aria-expanded", "false");
   });
-});
 
-function updateScrollUI() {
-  const top = window.scrollY;
-  const available =
-    document.documentElement.scrollHeight - window.innerHeight;
-
-  header?.classList.toggle("scrolled", top > 12);
-
-  if (progress) {
-    progress.style.width = `${
-      available > 0 ? (top / available) * 100 : 0
-    }%`;
+// Header styling while scrolling
+window.addEventListener(
+  "scroll",
+  () => {
+    header?.classList.toggle(
+      "scrolled",
+      window.scrollY > 12
+    );
+  },
+  {
+    passive: true,
   }
-}
-
-updateScrollUI();
-
-window.addEventListener("scroll", updateScrollUI, {
-  passive: true,
-});
-
-const revealElements = document.querySelectorAll(
-  ".reveal:not(.visible)"
 );
 
+// Reveal elements while scrolling
 if ("IntersectionObserver" in window) {
-  const revealObserver = new IntersectionObserver(
+  const observer = new IntersectionObserver(
     (entries) => {
       entries.forEach((entry) => {
-        if (!entry.isIntersecting) return;
-
-        entry.target.classList.add("visible");
-        revealObserver.unobserve(entry.target);
-      });
-    },
-    {
-      threshold: 0.1,
-      rootMargin: "0px 0px -35px",
-    }
-  );
-
-  revealElements.forEach((element, index) => {
-    element.style.transitionDelay = `${
-      Math.min(index % 4, 3) * 55
-    }ms`;
-
-    revealObserver.observe(element);
-  });
-} else {
-  revealElements.forEach((element) => {
-    element.classList.add("visible");
-  });
-}
-
-const observedSections = [
-  ...document.querySelectorAll(".section-anchor"),
-];
-
-const sectionLinks = [
-  ...document.querySelectorAll(".nav-links a"),
-];
-
-if ("IntersectionObserver" in window) {
-  const sectionObserver = new IntersectionObserver(
-    (entries) => {
-      const visible = entries
-        .filter((entry) => entry.isIntersecting)
-        .sort(
-          (first, second) =>
-            second.intersectionRatio - first.intersectionRatio
-        )[0];
-
-      if (!visible) return;
-
-      sectionLinks.forEach((link) => {
-        const active =
-          link.getAttribute("href") === `#${visible.target.id}`;
-
-        link.classList.toggle("active", active);
-
-        if (active) {
-          link.setAttribute("aria-current", "location");
-        } else {
-          link.removeAttribute("aria-current");
+        if (entry.isIntersecting) {
+          entry.target.classList.add("visible");
+          observer.unobserve(entry.target);
         }
       });
     },
     {
-      rootMargin: "-25% 0px -60%",
-      threshold: [0, 0.2, 0.5],
+      threshold: 0.1,
     }
   );
 
-  observedSections.forEach((section) => {
-    sectionObserver.observe(section);
-  });
+  document
+    .querySelectorAll(".reveal")
+    .forEach((element) => {
+      observer.observe(element);
+    });
+} else {
+  document
+    .querySelectorAll(".reveal")
+    .forEach((element) => {
+      element.classList.add("visible");
+    });
 }
 
+// Course information
 const courseData = {
-  digital: [
-    "ECE 2300/L",
-    "Digital Logic Design",
-    "Combinational and sequential logic, Boolean algebra, digital design methods, and laboratory implementation.",
-  ],
+  digital: {
+    code: "ECE 2300/L",
+    title: "Digital Logic Design",
+    description:
+      "Combinational and sequential logic, Boolean algebra, digital design methods, and laboratory implementation.",
+  },
 
-  circuits: [
-    "ECE 1101/L",
-    "Electrical Circuit Analysis I",
-    "Fundamental circuit laws, time-domain analysis, differential equations, computer tools, and supporting laboratory experiments.",
-  ],
+  circuits: {
+    code: "ECE 1101/L",
+    title: "Electrical Circuit Analysis I",
+    description:
+      "Fundamental circuit laws, time-domain analysis, differential-equation methods, computer tools, and supporting laboratory experiments.",
+  },
 
-  python: [
-    "CS 1260",
-    "Python Programming",
-    "Problem solving with expressions, control structures, data collections, functions, file I/O, exceptions, and object-oriented programming.",
-  ],
+  python: {
+    code: "CS 1260",
+    title: "Python Programming",
+    description:
+      "Problem solving with Python using expressions, control structures, data collections, functions, file I/O, exceptions, and object-oriented programming.",
+  },
 
-  cpp: [
-    "ECE 1310 / 2310",
-    "C/C++ Programming",
-    "Engineering problem solving, structured programming, object-oriented design, and software development using C and C++.",
-  ],
+  cpp: {
+    code: "ECE 1310 / ECE 2310",
+    title: "C/C++ Programming",
+    description:
+      "Engineering problem solving, structured programming, object-oriented design, and software development using C and C++.",
+  },
 
-  statistics: [
-    "STA 2260",
-    "Statistics",
-    "Statistical reasoning, probability-based analysis, estimation, inference, and interpretation of real data.",
-  ],
+  statistics: {
+    code: "STA 2260",
+    title: "Statistics",
+    description:
+      "Statistical reasoning, probability-based analysis, estimation, inference, and interpretation of real data.",
+  },
 
-  microelectronics: [
-    "ECE 2200",
-    "Introduction to Microelectronics",
-    "Semiconductor devices, diode and transistor models, and analysis of fundamental microelectronic circuits.",
-  ],
+  microelectronics: {
+    code: "ECE 2200",
+    title: "Introduction to Microelectronics",
+    description:
+      "Semiconductor devices, diode and transistor models, and the analysis and design of fundamental microelectronic circuits.",
+  },
 
-  datascience: [
-    "Data Science",
-    "Fundamentals of Data Science",
-    "Data preparation, exploration, visualization, modeling, and computational methods for extracting insight from data.",
-  ],
+  datascience: {
+    code: "CS 2410",
+    title: "Fundamentals of Data Science",
+    description:
+      "Data preparation, exploration, visualization, modeling, and computational methods for extracting insight from data.",
+  },
 
-  microcontrollers: [
-    "ECE 3301/L",
-    "Microcontrollers",
-    "Microcontroller architecture, embedded C firmware, peripherals, interfacing, timing, and hands-on laboratory development.",
-  ],
+  microcontrollers: {
+    code: "ECE 3301/L",
+    title: "Microcontrollers",
+    description:
+      "Microcontroller architecture, embedded C firmware, peripherals, interfacing, timing, and hands-on laboratory development.",
+  },
 
-  oop: [
-    "ECE 2310",
-    "Object-Oriented Programming",
-    "Software design using classes, objects, inheritance, polymorphism, data structures, and reusable programming practices.",
-  ],
+  oop: {
+    code: "ECE 2310",
+    title: "Object-Oriented Programming",
+    description:
+      "Software design using classes, objects, inheritance, polymorphism, data structures, and reusable programming practices.",
+  },
 };
 
+// Course modal elements
 const modal = document.getElementById("courseModal");
-const modalCard = modal?.querySelector(".modal-card");
-const modalCode = document.getElementById("courseModalCode");
-const modalTitle = document.getElementById("courseModalTitle");
+
+const modalPanel = modal?.querySelector(
+  ".course-modal-content"
+);
+
+const modalCode = document.getElementById(
+  "courseModalCode"
+);
+
+const modalTitle = document.getElementById(
+  "courseModalTitle"
+);
+
 const modalDescription = document.getElementById(
   "courseModalDescription"
 );
 
-let lastFocused;
+let lastFocused = null;
 
-function openCourseModal(key) {
-  const course = courseData[key];
+// Open course modal
+function openCourseModal(courseKey) {
+  const course = courseData[courseKey];
 
   if (
     !course ||
@@ -216,54 +219,86 @@ function openCourseModal(key) {
 
   lastFocused = document.activeElement;
 
-  modalCode.textContent = course[0];
-  modalTitle.textContent = course[1];
-  modalDescription.textContent = course[2];
+  modalCode.textContent = course.code;
+  modalTitle.textContent = course.title;
+  modalDescription.textContent =
+    course.description;
 
   modal.classList.add("open");
-  modal.setAttribute("aria-hidden", "false");
 
-  document.body.classList.add("modal-open");
+  modal.setAttribute(
+    "aria-hidden",
+    "false"
+  );
 
-  modalCard?.focus();
+  document.body.style.overflow = "hidden";
+
+  modalPanel?.focus();
 }
 
+// Close course modal
 function closeCourseModal() {
-  if (!modal) return;
+  if (!modal) {
+    return;
+  }
 
   modal.classList.remove("open");
-  modal.setAttribute("aria-hidden", "true");
 
-  document.body.classList.remove("modal-open");
+  modal.setAttribute(
+    "aria-hidden",
+    "true"
+  );
+
+  document.body.style.overflow = "";
 
   lastFocused?.focus();
 }
 
+// Course buttons
 document
-  .querySelectorAll(".course-tags button")
+  .querySelectorAll(".tag-button")
   .forEach((button) => {
     button.addEventListener("click", () => {
-      openCourseModal(button.dataset.course);
+      openCourseModal(
+        button.dataset.course
+      );
     });
   });
 
+// Close-modal button
 document
-  .querySelectorAll("[data-close-modal]")
-  .forEach((button) => {
-    button.addEventListener("click", closeCourseModal);
-  });
+  .getElementById("courseModalClose")
+  ?.addEventListener(
+    "click",
+    closeCourseModal
+  );
 
-document.addEventListener("keydown", (event) => {
-  if (
-    event.key === "Escape" &&
-    modal?.classList.contains("open")
-  ) {
-    closeCourseModal();
+// Close by clicking the backdrop
+document
+  .getElementById("courseModalBackdrop")
+  ?.addEventListener(
+    "click",
+    closeCourseModal
+  );
+
+// Close with Escape
+document.addEventListener(
+  "keydown",
+  (event) => {
+    if (
+      event.key === "Escape" &&
+      modal?.classList.contains("open")
+    ) {
+      closeCourseModal();
+    }
   }
-});
+);
 
-const year = document.getElementById("year");
+// Automatically update the footer year
+const yearElement =
+  document.getElementById("year");
 
-if (year) {
-  year.textContent = new Date().getFullYear();
+if (yearElement) {
+  yearElement.textContent =
+    new Date().getFullYear();
 }
