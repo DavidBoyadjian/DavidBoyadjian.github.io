@@ -49,14 +49,21 @@ body::before {
   z-index: -1;
   pointer-events: none;
   background-image:
-    linear-gradient(hsl(var(--border) / 0.18) 1px, transparent 1px),
+    linear-gradient(
+      hsl(var(--border) / 0.18) 1px,
+      transparent 1px
+    ),
     linear-gradient(
       90deg,
       hsl(var(--border) / 0.18) 1px,
       transparent 1px
     );
   background-size: 64px 64px;
-  mask-image: linear-gradient(to bottom, black, transparent 72%);
+  mask-image: linear-gradient(
+    to bottom,
+    black,
+    transparent 72%
+  );
 }
 
 a {
@@ -109,9 +116,8 @@ img {
   display: flex;
   align-items: center;
   gap: 0.75rem;
-  color: inherit;
-  text-decoration: none;
   font-weight: 800;
+  text-decoration: none;
 }
 
 .brand > span:first-child {
@@ -754,7 +760,7 @@ img {
 
 .leadership-grid {
   display: grid;
-  grid-template-columns: repeat(2, 1fr);
+  grid-template-columns: repeat(3, 1fr);
   gap: 1rem;
   margin-top: 3.5rem;
 }
@@ -773,6 +779,12 @@ img {
 
 .leadership-card p:last-child {
   color: hsl(var(--muted-fg));
+}
+
+.honors {
+  margin-top: 2rem;
+  padding-top: 2rem;
+  border-top: 1px solid hsl(var(--border));
 }
 
 /* Skills */
@@ -831,6 +843,15 @@ img {
   border-bottom: 1px solid currentColor;
   color: hsl(199 95% 58%);
   font-size: clamp(1.1rem, 2.7vw, 2rem);
+  text-decoration: none;
+}
+
+.contact-phone {
+  margin: 0.75rem 0 0 !important;
+}
+
+.contact-phone a {
+  color: hsl(214 15% 67%);
   text-decoration: none;
 }
 
@@ -919,7 +940,7 @@ img {
   color: hsl(var(--muted-fg));
 }
 
-/* Reveal animation */
+/* Reveal animations */
 
 .reveal {
   opacity: 0;
@@ -1010,6 +1031,10 @@ img {
   .education-card {
     margin-top: 2rem;
   }
+
+  .leadership-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
 }
 
 /* Mobile */
@@ -1087,7 +1112,7 @@ img {
   }
 }
 
-/* Reduced motion accessibility */
+/* Reduced-motion accessibility */
 
 @media (prefers-reduced-motion: reduce) {
   html {
