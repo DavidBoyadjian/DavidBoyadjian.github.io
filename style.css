@@ -216,6 +216,7 @@ img {
   text-transform: uppercase;
 }
 
+/* Change .webrow to .eyebrow */
 .eyebrow {
   display: flex;
   align-items: center;
@@ -433,7 +434,7 @@ img {
   font-size: 0.8rem;
 }
 
-/* General sections */
+/* General Sections */
 
 .section {
   padding: 8rem 0;
@@ -456,12 +457,11 @@ img {
 }
 
 .section-summary,
-.projects-heading > p {
+.projects-heading >p {
   color: hsl(var(--muted-fg));
 }
 
 /* About */
-
 .split-intro {
   display: grid;
   grid-template-columns: 1.1fr 0.9fr;
@@ -584,6 +584,30 @@ img {
   font-family: "DM Mono", monospace;
   font-size: 0.7rem;
   font-weight: 500;
+}
+
+/* Organization Logos */
+
+.org-title {
+  display: flex;
+  align-items: flex-start;
+  gap: 1rem;
+  min-width: 0;
+}
+
+.org-title > div {
+  min-width: 0;
+}
+
+.org-logo {
+  width: 64px;
+  height: 64px;
+  flex: 0 0 64px;
+  padding: 0.4rem;
+  border: 1px solid hsl(var(--border));
+  border-radius: 14px;
+  background: white;
+  object-fit: contain;
 }
 
 /* Projects */
@@ -714,17 +738,22 @@ img {
   box-shadow: var(--shadow);
 }
 
-.school-mark {
-  width: 70px;
-  height: 70px;
+.education-logo {
+  width: 80px;
+  height: 80px;
   display: grid;
   place-items: center;
+  padding: 0.45rem;
+  overflow: hidden;
+  border: 1px solid hsl(var(--border));
   border-radius: 18px;
-  background: hsl(var(--primary));
-  color: white;
-  font-family: "DM Mono", monospace;
-  font-size: 1rem;
-  font-weight: 500;
+  background: white;
+}
+
+.education-logo img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
 }
 
 .date {
@@ -772,9 +801,26 @@ img {
   background: hsl(var(--card));
 }
 
-.leadership-card .card-index {
-  display: block;
-  margin-bottom: 4rem;
+.leadership-top {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 1rem;
+  margin-bottom: 2.4rem;
+}
+
+.leadership-card .leadership-top .card-index {
+  margin: 0;
+}
+
+.leadership-logo {
+  width: 100px;
+  height: 70px;
+  padding: 0.4rem;
+  border: 1px solid hsl(var(--border));
+  border-radius: 12px;
+  background: white;
+  object-fit: contain;
 }
 
 .leadership-card p:last-child {
@@ -809,6 +855,54 @@ img {
   font-family: "DM Mono", monospace;
   font-size: 0.77rem;
   line-height: 1.9;
+}
+
+/* Closing Profile */
+
+.closing-profile {
+  border-top: 1px solid hsl(var(--border));
+  background: linear-gradient(
+    135deg,
+    hsl(var(--primary) / 0.08),
+    hsl(var(--accent) / 0.05)
+  );
+}
+
+.closing-grid {
+  display: grid;
+  grid-template-columns: minmax(260px, 0.7fr) 1.3fr;
+  align-items: center;
+  gap: 7vw;
+}
+
+.closing-photo-wrap {
+  padding: 0.7rem;
+  border: 1px solid hsl(var(--border));
+  border-radius: 28px;
+  background: hsl(var(--card));
+  box-shadow: var(--shadow);
+  transform: rotate(-1.5deg);
+}
+
+.closing-photo {
+  width: 100%;
+  aspect-ratio: 4 / 5;
+  border-radius: 20px;
+  object-fit: cover;
+}
+
+.closing-copy h2 {
+  margin: 0.4rem 0 1rem;
+  font-size: clamp(2.2rem, 4.5vw, 4.8rem);
+  line-height: 1.04;
+  letter-spacing: -0.055em;
+}
+
+.closing-copy > p:not(.kicker) {
+  max-width: 680px;
+  margin-bottom: 1.8rem;
+  color: hsl(var(--muted-fg));
+  font-size: 1.05rem;
 }
 
 /* Footer */
@@ -877,7 +971,7 @@ img {
   color: white;
 }
 
-/* Course modal */
+/* Course Modal */
 
 .course-modal {
   position: fixed;
@@ -940,7 +1034,7 @@ img {
   color: hsl(var(--muted-fg));
 }
 
-/* Reveal animations */
+/* Reveal Animation */
 
 .reveal {
   opacity: 0;
@@ -1035,6 +1129,29 @@ img {
   .leadership-grid {
     grid-template-columns: repeat(2, 1fr);
   }
+
+  .org-logo {
+    width: 56px;
+    height: 56px;
+    flex-basis: 56px;
+  }
+
+  .closing-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .closing-photo-wrap {
+    width: min(420px, 90%);
+    margin-inline: auto;
+  }
+
+  .closing-copy {
+    text-align: center;
+  }
+
+  .closing-copy > p:not(.kicker) {
+    margin-inline: auto;
+  }
 }
 
 /* Mobile */
@@ -1079,6 +1196,14 @@ img {
     margin-top: 0.7rem;
   }
 
+  .org-title {
+    display: block;
+  }
+
+  .org-logo {
+    margin-bottom: 0.8rem;
+  }
+
   .project-grid,
   .leadership-grid {
     grid-template-columns: 1fr;
@@ -1098,8 +1223,22 @@ img {
     grid-template-columns: 1fr;
   }
 
+  .education-logo {
+    width: 90px;
+    height: 90px;
+  }
+
   .coursework {
     grid-column: auto;
+  }
+
+  .leadership-logo {
+    width: 90px;
+    height: 64px;
+  }
+
+  .closing-photo-wrap {
+    width: min(340px, 92%);
   }
 
   .footer-bottom {
@@ -1112,7 +1251,7 @@ img {
   }
 }
 
-/* Reduced-motion accessibility */
+/* Reduced Motion */
 
 @media (prefers-reduced-motion: reduce) {
   html {
