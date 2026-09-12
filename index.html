@@ -3,383 +3,674 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <meta
-    name="description"
-    content="David Boyadjian – Computer Engineering student portfolio, resume, projects, and experience."
-  />
-  <title>David Boyadjian</title>
+  <meta name="description" content="David Boyadjian — Computer Engineering student building embedded systems, intelligent software, and data-driven engineering tools." />
+  <meta name="theme-color" content="#07111f" />
+
+  <title>David Boyadjian | Computer Engineering</title>
 
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+
   <link
-    href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"
+    href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Manrope:wght@400;500;600;700;800&display=swap"
     rel="stylesheet"
   />
 
   <link rel="icon" type="image/svg+xml" href="assets/favicon.svg" />
   <link rel="stylesheet" href="style.css" />
 </head>
-<body>
-  <header id="top">
-    <nav class="nav container" aria-label="Primary">
-      <a class="brand" href="#hero">David Boyadjian</a>
 
-      <button class="menu-toggle" aria-label="Open menu" aria-expanded="false">
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+
+  <header class="site-header">
+    <nav class="nav container" aria-label="Primary navigation">
+      <a class="brand" href="#hero" aria-label="David Boyadjian, home">
+        <span>DB</span>
+        <span class="brand-name">David Boyadjian</span>
+      </a>
+
+      <button
+        class="menu-toggle"
+        type="button"
+        aria-label="Open navigation"
+        aria-expanded="false"
+      >
         <span class="bar"></span>
         <span class="bar"></span>
         <span class="bar"></span>
       </button>
 
       <ul class="links">
-        <li><a class="nav-link" href="#about">About</a></li>
-        <li><a class="nav-link" href="#experience">Experience</a></li>
-        <li><a class="nav-link" href="#projects">Projects</a></li>
-        <li><a class="nav-link" href="#education">Education</a></li>
-        <li><a class="nav-link" href="#activities">Activities</a></li>
-        <li><a class="nav-link" href="#skills">Skills</a></li>
-        <li><a class="nav-link" href="#contact">Contact</a></li>
+        <li><a href="#about">About</a></li>
+        <li><a href="#experience">Experience</a></li>
+        <li><a href="#projects">Projects</a></li>
+        <li><a href="#education">Education</a></li>
+        <li><a href="#leadership">Leadership</a></li>
+        <li><a href="#contact">Contact</a></li>
+
         <li>
-          <button class="theme-toggle" id="themeBtn" aria-label="Toggle theme">
-            <span class="icon-sun" aria-hidden="true">☀️</span>
-            <span class="icon-moon" aria-hidden="true">🌙</span>
+          <button
+            class="theme-toggle"
+            id="themeBtn"
+            type="button"
+            aria-label="Switch color theme"
+          >
+            <span class="icon-sun" aria-hidden="true">Light</span>
+            <span class="icon-moon" aria-hidden="true">Dark</span>
           </button>
         </li>
       </ul>
     </nav>
   </header>
 
-  <!-- Hero -->
-  <section id="hero" class="hero container">
-    <div class="hero-image-wrap reveal">
-      <img class="avatar" src="assets/boyadjian_david.jpg" alt="Portrait of David Boyadjian" />
-    </div>
+  <main id="main">
+    <section id="hero" class="hero container">
+      <div class="hero-copy reveal">
+        <p class="eyebrow">
+          <span class="status-dot"></span>
+          Open to engineering internships
+        </p>
 
-    <div class="hero-copy reveal">
-      <p class="eyebrow">Computer Engineering • Data Science • Statistics</p>
-      <h1>Hi, I’m <span class="grad">David Boyadjian</span></h1>
-      <p class="subtitle">
-        I am a multidisciplinary Computer Engineering student with a strong interest in machine learning, embedded systems,
-        and data science. I am seeking opportunities to grow in a challenging environment where I can design and deploy
-        statistical learning models on embedded hardware, particularly within the defense industry.
-      </p>
+        <h1>
+          I build where
+          <span class="grad">hardware, intelligence,</span>
+          and data meet.
+        </h1>
 
-      <div class="cta-row">
-        <a class="btn btn-primary" href="assets/David_Boyadjian_Resume.pdf" download>
-          Download Resume
-        </a>
-        <a class="btn btn-outline" href="#projects">View Projects</a>
-        <a class="btn btn-ghost" href="#contact">Contact Me</a>
+        <p class="subtitle">
+          I’m David Boyadjian, a Computer Engineering student at Cal Poly
+          Pomona developing embedded systems, intelligent software, and data
+          tools for real engineering problems.
+        </p>
+
+        <div class="focus-line" aria-label="Areas of focus">
+          <span>Embedded systems</span>
+          <span>Edge AI</span>
+          <span>Data engineering</span>
+        </div>
+
+        <div class="cta-row">
+          <a class="btn btn-primary" href="#projects">
+            Explore my work <span aria-hidden="true">↘</span>
+          </a>
+
+          <a
+            class="btn btn-outline"
+            href="assets/David_Boyadjian_Resume.pdf"
+            download
+          >
+            Download résumé
+          </a>
+        </div>
+
+        <div class="quick-contacts">
+          <a href="mailto:dboyadjian@cpp.edu">
+            dboyadjian@cpp.edu
+          </a>
+
+          <a
+            href="https://www.linkedin.com/in/david-boyadjian"
+            target="_blank"
+            rel="noopener"
+          >
+            LinkedIn ↗
+          </a>
+
+          <a
+            href="https://github.com/DavidBoyadjian"
+            target="_blank"
+            rel="noopener"
+          >
+            GitHub ↗
+          </a>
+        </div>
       </div>
 
-      <div class="quick-contacts">
-        <a href="mailto:dboyadjian@cpp.edu">dboyadjian@cpp.edu</a>
-        <span>•</span>
-        <a href="tel:+18187513885">+1 (818) 751-3885</a>
-        <span>•</span>
-        <a href="https://www.linkedin.com/in/david-boyadjian" target="_blank" rel="noopener">LinkedIn</a>
-      </div>
+      <div class="hero-visual reveal" aria-label="Portrait and profile details">
+        <div class="portrait-frame">
+          <img
+            class="avatar"
+            src="assets/boyadjian_david.jpg"
+            alt="David Boyadjian"
+          />
 
-      <div class="hero-stats">
-        <div class="stat">
-          <strong>2+</strong>
-          <span>Professional roles</span>
+          <div class="portrait-label">
+            <span>Computer Engineering</span>
+            <small>Pomona, California</small>
+          </div>
         </div>
-        <div class="stat">
-          <strong>3</strong>
-          <span>Languages spoken</span>
+
+        <div class="orbit-card card-a">
+          <strong>STM32</strong>
+          <span>Firmware + control</span>
         </div>
-        <div class="stat">
+
+        <div class="orbit-card card-b">
+          <strong>AI / ML</strong>
+          <span>Engineering systems</span>
+        </div>
+      </div>
+    </section>
+
+    <section class="proof-strip" aria-label="Profile highlights">
+      <div class="container proof-grid">
+        <div>
+          <strong>30K+</strong>
+          <span>customer records analyzed</span>
+        </div>
+
+        <div>
           <strong>2029</strong>
-          <span>Expected graduation</span>
+          <span>expected graduation</span>
+        </div>
+
+        <div>
+          <strong>3</strong>
+          <span>languages spoken</span>
+        </div>
+
+        <div>
+          <strong>$5K+</strong>
+          <span>student funds managed</span>
         </div>
       </div>
-    </div>
-  </section>
+    </section>
 
-  <!-- About -->
-  <section id="about" class="section alt">
-    <div class="container">
-      <h2 class="section-title reveal">About Me</h2>
-      <div class="about-card reveal">
-        <p>
-          I’m a Computer Engineering student passionate about technology, data, and mathematical analysis.
-          My experience includes data analysis, workflow automation, and designing efficient workflow logic with interpersonal skills in event operations and student leadership.
-          I’m especially interested in embedded systems engineering, machine learning software engineering, and statistical data science.
-          My ultimate goal in my academic journey is combining these three disciplines to create a special senior capstone project that will prepare me for real-world projects.
-        </p>
-        <p>
-          Currently, I am focused on enhancing my technical skills through coursework, allowing me to start working on hands-on projects that will prepare me for internships.
-          I am developing my skills in object-oriented programming and circuit analysis to build a strong foundation in firmware engineering.
-          On the data side, I am developing proficiency in Python, SQL, and R for statistical computations, while building a strong foundation in data science to advance toward machine learning.
-        </p>
-      </div>
-    </div>
-  </section>
+    <section id="about" class="section">
+      <div class="container split-intro">
+        <div class="section-heading reveal">
+          <p class="kicker">01 / About</p>
 
-  <!-- Experience -->
-  <section id="experience" class="section">
-    <div class="container">
-      <h2 class="section-title reveal">Work Experience</h2>
+          <h2>
+            Engineering systems that connect the physical and digital worlds.
+          </h2>
+        </div>
 
-      <div class="grid">
-        <article class="card reveal">
-          <header class="card-head">
-            <div>
-              <h3>Data Analyst Intern</h3>
-              <p class="org">Athens Services</p>
-            </div>
-            <div class="meta">
-              <span>June 2025 – August 2025</span>
-              <span>• Pacoima, CA</span>
-            </div>
-          </header>
-          <p class="description">
-            In a data-driven business environment, I worked with large-scale datasets containing 30,000+ customer records
-            across Ventura and Orange County, using SSMS to join and query databases to support operational needs.
-            To improve efficiency, I contributed to Salesforce application development, including enhancements to the
-            Field Service mobile app, and updated low-code applications in AppSheet to automate internal workflows.
-            Additionally, I gained exposure to business intelligence practices by shadowing the development of Tableau dashboards,
-            observing how data is translated into actionable insights. I also participated in developing an AI-powered database
-            with a custom user interface, gaining exposure to UI/UX design and full-stack development while integrating data management with user-friendly design.
-          </p>
-        </article>
-
-        <article class="card reveal">
-          <header class="card-head">
-            <div>
-              <h3>Student Assistant – Events & Conferences</h3>
-              <p class="org">Cal Poly Pomona – College of Engineering</p>
-            </div>
-            <div class="meta">
-              <span>August 2025 – May 2026</span>
-              <span>• Pomona, CA</span>
-            </div>
-          </header>
-          <p class="description">
-            In a fast-paced, event-driven environment, I planned and hosted engineering events for the Dean’s boards and student organizations,
-            averaging 5–8 events per month. To support event operations, I managed folder-based databases and cleaned and validated over 1,000
-            attendance records in Excel to ensure data accuracy. I also owned Eventbrite registrations and created promotional materials in Canva
-            to increase event turnout and engagement. Additionally, I coordinated with vendors, companies, faculty, and staff while managing 25Live
-            reservations and tracking event data to ensure smooth execution and organization.
-          </p>
-        </article>
-      </div>
-    </div>
-  </section>
-
-  <!-- Projects -->
-  <section id="projects" class="section alt">
-    <div class="container">
-      <h2 class="section-title reveal">Projects</h2>
-
-      <div class="grid">
-        <article class="card reveal">
-          <header class="card-head">
-            <div>
-              <h3>Portfolio Website</h3>
-              <p class="org">HTML • CSS • JavaScript • GitHub • Web Development</p>
-            </div>
-          </header>
+        <div class="about-copy reveal">
           <p>
-            Built and deployed a personal portfolio website to showcase experience, education, skills,
-            and future technical projects in a clean and responsive layout through GitHub.
+            I’m pursuing a B.S. in Computer Engineering with a minor in Data
+            Science &amp; Statistics. My work spans firmware, circuits,
+            software, databases, and the statistical thinking that turns raw
+            information into useful decisions.
           </p>
-        </article>
-      </div>
 
-      <p class="section-note reveal">
-        More software, data science, and machine learning projects coming soon.
-      </p>
-    </div>
-  </section>
-
-  <!-- Education -->
-  <section id="education" class="section">
-    <div class="container">
-      <h2 class="section-title reveal">Education</h2>
-      <div class="grid">
-        <article class="card reveal">
-          <header class="card-head">
-            <div>
-              <h3>California State Polytechnic University, Pomona</h3>
-              <p class="org">B.S. Computer Engineering • Minor: Data Science & Statistics</p>
-            </div>
-            <div class="meta">
-              <span>Expected Graduation: May 2029</span>
-              <span>•</span>
-              <span>GPA: 3.81</span>
-            </div>
-          </header>
-
-          <div class="tags coursework-tags">
-            <span class="tag">Calculus</span>
-
-            <button class="tag tag-button" type="button" data-course="python">
-              Python
-            </button>
-
-            <button class="tag tag-button" type="button" data-course="circuit">
-              Circuit Analysis I
-            </button>
-          </div>
-        </article>
-      </div>
-    </div>
-  </section>
-
-  <!-- Activities -->
-  <section id="activities" class="section alt">
-    <div class="container">
-      <h2 class="section-title reveal">Extracurricular Activities</h2>
-
-      <div class="grid">
-        <article class="card reveal">
-          <header class="card-head">
-            <div>
-              <h3>Engineers Without Borders</h3>
-              <p class="org">Treasurer • 2025 – 2026</p>
-            </div>
-          </header>
           <p>
-            As Treasurer, I managed club finances across General, Donation, and ASI accounts totaling over $5,000, ensuring accurate record-keeping,
-            timely transactions, and proper payment processing. To support organizational operations, I handled disbursement approvals and prepared
-            annual budget submissions for funding and events. I collaborated closely with the executive board to plan budgets, allocate resources, 
-            and coordinate events while meeting all university financial deadlines. Additionally, I actively participated in events and community
-            service initiatives, contributing to projects aligned with the EWB mission of “Building a Better World.”
+            I’m especially interested in embedded edge AI: systems that sense,
+            compute, and respond on real hardware. Long term, I want to build
+            reliable intelligent technology for aerospace, defense, robotics,
+            and other high-impact engineering environments.
           </p>
-        </article>
 
-        <article class="card reveal">
-          <header class="card-head">
-            <div>
-              <h3>Dean of Engineering Student Advisory Board</h3>
-              <p class="org">Board Member • 2025 – 2026</p>
+          <div class="principles">
+            <span>Build hands-on</span>
+            <span>Think across disciplines</span>
+            <span>Design for real users</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="experience" class="section alt">
+      <div class="container">
+        <div class="section-heading reveal">
+          <p class="kicker">02 / Experience</p>
+          <h2>Professional experience</h2>
+        </div>
+
+        <div class="timeline">
+          <article class="timeline-item reveal">
+            <div class="timeline-date">Jun–Aug 2025</div>
+
+            <div class="timeline-body">
+              <div class="title-row">
+                <div>
+                  <h3>Data Analyst Intern</h3>
+                  <p class="org">Athens Services · Pacoima, CA</p>
+                </div>
+
+                <span class="role-type">Data + Automation</span>
+              </div>
+
+              <ul>
+                <li>
+                  Queried, joined, cleaned, and validated databases containing
+                  more than 30,000 customer records across Ventura and Orange
+                  County using SQL Server Management Studio.
+                </li>
+
+                <li>
+                  Improved operational workflows through Salesforce Field
+                  Service and AppSheet application updates.
+                </li>
+
+                <li>
+                  Gained hands-on exposure to Tableau reporting and contributed
+                  to an AI-powered database interface connecting data management
+                  with usable front-end design.
+                </li>
+              </ul>
+
+              <div class="tags">
+                <span>SQL</span>
+                <span>SSMS</span>
+                <span>Salesforce</span>
+                <span>AppSheet</span>
+                <span>Tableau</span>
+              </div>
             </div>
-          </header>
+          </article>
+
+          <article class="timeline-item reveal">
+            <div class="timeline-date">Aug 2025–May 2026</div>
+
+            <div class="timeline-body">
+              <div class="title-row">
+                <div>
+                  <h3>Student Assistant — Events &amp; Conferences</h3>
+                  <p class="org">
+                    Cal Poly Pomona · College of Engineering
+                  </p>
+                </div>
+
+                <span class="role-type">Operations + Leadership</span>
+              </div>
+
+              <ul>
+                <li>
+                  Planned and supported recurring engineering events for college
+                  leadership, student organizations, faculty, staff, vendors,
+                  and industry partners.
+                </li>
+
+                <li>
+                  Managed registration and attendance data, cleaned records in
+                  Excel, produced event communications, and coordinated rooms
+                  through 25Live.
+                </li>
+
+                <li>
+                  Turned a complex event workflow into the idea and requirements
+                  for a dedicated event-management application.
+                </li>
+              </ul>
+
+              <div class="tags">
+                <span>Excel</span>
+                <span>Eventbrite</span>
+                <span>25Live</span>
+                <span>Canva</span>
+                <span>Coordination</span>
+              </div>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="projects" class="section">
+      <div class="container">
+        <div class="section-heading projects-heading reveal">
+          <div>
+            <p class="kicker">03 / Projects</p>
+            <h2>Selected engineering work</h2>
+          </div>
+
           <p>
-            As a member of the Dean’s Student Advisory Board (SAB), I represented the interests and needs of the College of Engineering student body
-            by providing direct feedback to the dean on student experiences and initiatives. I contributed to strengthening communication between
-            students and college leadership while supporting strategic improvements within the college. Additionally, I represented the college at
-            premier events and tours, engaging with prospective students, faculty, and industry professionals. Through this role, I developed
-            professional relationships with industry leaders and demonstrated leadership by actively contributing to events and initiatives that
-            promote the college’s mission and community.
+            Projects that reflect how I learn: identify a real need, build the
+            system, and iterate until it works.
           </p>
+        </div>
+
+        <div class="project-grid">
+          <article class="project-card featured reveal">
+            <div class="project-number">01</div>
+
+            <div class="project-content">
+              <p class="project-state">
+                <span></span>
+                Active build
+              </p>
+
+              <h3>STM32 UGV Drive &amp; Servo Control</h3>
+
+              <p>
+                Developing modular embedded control for an unmanned ground
+                vehicle using an STM32 Nucleo-F767ZI. The firmware connects PWM
+                output, GPIO direction control, and reusable motor and servo
+                interfaces as part of a larger robotic platform.
+              </p>
+
+              <div class="tags">
+                <span>Embedded C</span>
+                <span>STM32 HAL</span>
+                <span>PWM</span>
+                <span>GPIO</span>
+                <span>Firmware</span>
+              </div>
+            </div>
+
+            <div class="project-code" aria-hidden="true">
+              <span>motor-&gt;htim</span>
+              <span>HAL_TIM_PWM_Start()</span>
+              <span>GPIO_PIN_14</span>
+              <span>velocity &gt; 0</span>
+            </div>
+          </article>
+
+          <article class="project-card reveal">
+            <div class="project-number">02</div>
+
+            <div class="project-content">
+              <p class="project-state complete">
+                <span></span>
+                Deployed
+              </p>
+
+              <h3>Engineering Event Management System</h3>
+
+              <p>
+                Built a full-stack operations hub for creating, tracking, and
+                managing events, reservations, catering, hosts, tasks, and
+                notes. The application translates firsthand event-planning
+                experience into a practical workflow used for day-to-day
+                coordination.
+              </p>
+
+              <div class="tags">
+                <span>React</span>
+                <span>TypeScript</span>
+                <span>Node.js</span>
+                <span>Express</span>
+                <span>PostgreSQL</span>
+                <span>REST API</span>
+              </div>
+            </div>
+          </article>
+
+          <article class="project-card reveal">
+            <div class="project-number">03</div>
+
+            <div class="project-content">
+              <p class="project-state complete">
+                <span></span>
+                Live
+              </p>
+
+              <h3>Personal Portfolio</h3>
+
+              <p>
+                Designed and deployed this responsive portfolio with accessible
+                navigation, light and dark themes, motion, and a modular content
+                system to document my growth across hardware, software, and
+                data.
+              </p>
+
+              <div class="tags">
+                <span>HTML</span>
+                <span>CSS</span>
+                <span>JavaScript</span>
+                <span>GitHub Pages</span>
+              </div>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="education" class="section alt">
+      <div class="container education-grid">
+        <div class="section-heading reveal">
+          <p class="kicker">04 / Education</p>
+          <h2>Built on engineering fundamentals.</h2>
+
+          <p class="section-summary">
+            A deliberately interdisciplinary path across hardware, software,
+            mathematics, and statistics.
+          </p>
+        </div>
+
+        <article class="education-card reveal">
+          <div class="school-mark" aria-hidden="true">CPP</div>
+
+          <div>
+            <p class="date">Expected May 2029</p>
+
+            <h3>
+              California State Polytechnic University, Pomona
+            </h3>
+
+            <p class="degree">
+              B.S. Computer Engineering<br />
+              Minor in Data Science &amp; Statistics
+            </p>
+          </div>
+
+          <div class="coursework">
+            <h4>Relevant coursework</h4>
+
+            <div class="tags coursework-tags">
+              <button
+                class="tag-button"
+                data-course="digital"
+                type="button"
+              >
+                Digital Logic Design
+              </button>
+
+              <button
+                class="tag-button"
+                data-course="circuits"
+                type="button"
+              >
+                Circuit Analysis
+              </button>
+
+              <button
+                class="tag-button"
+                data-course="python"
+                type="button"
+              >
+                Python
+              </button>
+
+              <button
+                class="tag-button"
+                data-course="linear"
+                type="button"
+              >
+                Linear Algebra
+              </button>
+
+              <button
+                class="tag-button"
+                data-course="statistics"
+                type="button"
+              >
+                Statistics
+              </button>
+
+              <button
+                class="tag-button"
+                data-course="physics"
+                type="button"
+              >
+                Physics
+              </button>
+            </div>
+          </div>
         </article>
       </div>
-    </div>
-  </section>
+    </section>
 
-  <!-- Achievements -->
-  <section id="achievements" class="section">
-    <div class="container">
-      <h2 class="section-title reveal">Achievements</h2>
-      <ul class="chips reveal">
-        <li class="chip">National Honor Society</li>
-        <li class="chip">ΑΛΔ Alpha Lambda Delta Honor Society</li>
-        <li class="chip">Scholarships for Academic Excellence</li>
-        <li class="chip">Principal’s Honors Award</li>
-      </ul>
-    </div>
-  </section>
-
-  <!-- Skills -->
-  <section id="skills" class="section alt">
-    <div class="container">
-      <h2 class="section-title reveal">Skills</h2>
-
-      <div class="skills">
-        <div class="skill-col reveal">
-          <h3>Languages</h3>
-          <div class="tags">
-            <span class="tag">Armenian</span>
-            <span class="tag">English</span>
-            <span class="tag">Russian</span>
-          </div>
+    <section id="leadership" class="section">
+      <div class="container">
+        <div class="section-heading reveal">
+          <p class="kicker">05 / Leadership</p>
+          <h2>Contributing beyond the classroom</h2>
         </div>
 
-        <div class="skill-col reveal">
-          <h3>Technical Tools</h3>
-          <div class="tags">
-            <span class="tag">Excel</span>
-            <span class="tag">Word</span>
-            <span class="tag">PowerPoint</span>
-            <span class="tag">Canva</span>
-            <span class="tag">25Live</span>
-            <span class="tag">Eventbrite</span>
-            <span class="tag">GitHub</span>
-            <span class="tag">VS Code</span>
-          </div>
+        <div class="leadership-grid">
+          <article class="leadership-card reveal">
+            <span class="card-index">A</span>
+
+            <h3>Engineers Without Borders</h3>
+
+            <p class="org">
+              Treasurer · 2025–2026
+            </p>
+
+            <p>
+              Managed more than $5,000 across university and donation accounts,
+              prepared budgets, processed disbursements, and partnered with the
+              executive board on events and community-service initiatives.
+            </p>
+          </article>
+
+          <article class="leadership-card reveal">
+            <span class="card-index">B</span>
+
+            <h3>Dean’s Student Advisory Board</h3>
+
+            <p class="org">
+              Board Member · 2025–2026
+            </p>
+
+            <p>
+              Represented engineering students in direct conversations with
+              college leadership, supported major events and tours, and helped
+              strengthen communication across the College of Engineering
+              community.
+            </p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="skills" class="section alt">
+      <div class="container skills-layout">
+        <div class="section-heading reveal">
+          <p class="kicker">06 / Toolkit</p>
+
+          <h2>
+            Technical range with an embedded core.
+          </h2>
         </div>
 
-        <div class="skill-col reveal">
-          <h3>Development</h3>
-          <div class="tags">
-            <span class="tag">Salesforce</span>
-            <span class="tag">AppSheet</span>
-            <span class="tag">Python</span>
-            <span class="tag">SQL</span>
-            <span class="tag">Tableau</span>
-            <span class="tag">HTML</span>
-            <span class="tag">CSS</span>
-            <span class="tag">JavaScript</span>
-            <span class="tag">UI/UX</span>
-          </div>
-        </div>
+        <div class="skill-groups reveal">
+          <div>
+            <h3>Programming &amp; software</h3>
 
-        <div class="skill-col reveal">
-          <h3>Soft Skills</h3>
-          <div class="tags">
-            <span class="tag">Discipline</span>
-            <span class="tag">Time Management</span>
-            <span class="tag">Communication</span>
-            <span class="tag">Leadership</span>
-            <span class="tag">Event Coordination</span>
-            <span class="tag">Teamwork</span>
+            <p>
+              Python · C · C++ · SQL · JavaScript · TypeScript · React ·
+              Node.js · Express · HTML · CSS · REST APIs
+            </p>
           </div>
-        </div>
 
-        <div class="skill-col reveal">
-          <h3>Academic Areas</h3>
-          <div class="tags">
-            <span class="tag">Algebra</span>
-            <span class="tag">Statistics</span>
-            <span class="tag">Calculus</span>
-            <span class="tag">Physics</span>
-            <span class="tag">Data Analytics</span>
+          <div>
+            <h3>Embedded &amp; engineering</h3>
+
+            <p>
+              STM32 · STM32CubeIDE · HAL · PWM · GPIO · LTspice · circuit
+              analysis · digital logic · Fusion 360 · CAD · 3D printing ·
+              slicers
+            </p>
+          </div>
+
+          <div>
+            <h3>Data &amp; platforms</h3>
+
+            <p>
+              SQL Server Management Studio · PostgreSQL · Tableau · Excel ·
+              Salesforce · AppSheet · Git · GitHub · Vercel · Render · Neon
+            </p>
+          </div>
+
+          <div>
+            <h3>Languages</h3>
+
+            <p>
+              English · Armenian · Russian
+            </p>
           </div>
         </div>
       </div>
-    </div>
-  </section>
+    </section>
+  </main>
 
-  <!-- Footer -->
   <footer id="contact" class="footer">
-    <div class="container footer-inner">
-      <div class="foot-left">
-        <h3>Let’s connect</h3>
-        <p>Open to internships, technical opportunities, and meaningful projects.</p>
-      </div>
-      <div class="foot-links">
-        <a href="mailto:dboyadjian@cpp.edu">Email</a>
-        <a href="tel:+18187513885">Call</a>
-        <a href="https://www.linkedin.com/in/david-boyadjian" target="_blank" rel="noopener">LinkedIn</a>
-        <a href="assets/David_Boyadjian_Resume.pdf" download>Resume</a>
+    <div class="container footer-main reveal">
+      <p class="kicker">07 / Contact</p>
+
+      <h2>
+        Let’s build something that matters.
+      </h2>
+
+      <p>
+        I’m open to internships, research collaborations, and engineering
+        projects at the intersection of embedded systems, AI, and data.
+      </p>
+
+      <a class="email-link" href="mailto:dboyadjian@cpp.edu">
+        dboyadjian@cpp.edu <span aria-hidden="true">↗</span>
+      </a>
+    </div>
+
+    <div class="container footer-bottom">
+      <span>© <span id="year"></span> David Boyadjian</span>
+
+      <div>
+        <a
+          href="https://www.linkedin.com/in/david-boyadjian"
+          target="_blank"
+          rel="noopener"
+        >
+          LinkedIn
+        </a>
+
+        <a
+          href="https://github.com/DavidBoyadjian"
+          target="_blank"
+          rel="noopener"
+        >
+          GitHub
+        </a>
+
+        <a href="#hero">Back to top ↑</a>
       </div>
     </div>
-    <p class="copyright">© <span id="year"></span> David Boyadjian</p>
   </footer>
 
   <div class="course-modal" id="courseModal" aria-hidden="true">
-    <div class="course-modal-backdrop" id="courseModalBackdrop"></div>
+    <div
+      class="course-modal-backdrop"
+      id="courseModalBackdrop"
+    ></div>
 
-    <div class="course-modal-content" role="dialog" aria-modal="true" aria-labelledby="courseModalTitle">
-      <button class="course-modal-close" id="courseModalClose" aria-label="Close course details">
+    <div
+      class="course-modal-content"
+      role="dialog"
+      aria-modal="true"
+      aria-labelledby="courseModalTitle"
+      tabindex="-1"
+    >
+      <button
+        class="course-modal-close"
+        id="courseModalClose"
+        type="button"
+        aria-label="Close course details"
+      >
         ×
       </button>
 
-      <p class="course-modal-code" id="courseModalCode"></p>
-      <h3 class="course-modal-title" id="courseModalTitle"></h3>
-      <p class="course-modal-description" id="courseModalDescription"></p>
+      <p
+        class="course-modal-code"
+        id="courseModalCode"
+      ></p>
+
+      <h3 id="courseModalTitle"></h3>
+
+      <p id="courseModalDescription"></p>
     </div>
   </div>
 
