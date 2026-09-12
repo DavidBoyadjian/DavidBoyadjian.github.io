@@ -265,7 +265,7 @@ document
     });
   });
 
-// Close modal button
+// Close-modal button
 document
   .getElementById("courseModalClose")
   ?.addEventListener(
@@ -273,7 +273,7 @@ document
     closeCourseModal
   );
 
-// Close modal by clicking backdrop
+// Close by clicking the backdrop
 document
   .getElementById("courseModalBackdrop")
   ?.addEventListener(
@@ -281,7 +281,7 @@ document
     closeCourseModal
   );
 
-// Close modal using Escape
+// Close with Escape
 document.addEventListener(
   "keydown",
   (event) => {
@@ -294,7 +294,7 @@ document.addEventListener(
   }
 );
 
-// Automatically update footer year
+// Automatically update the footer year
 const yearElement =
   document.getElementById("year");
 
