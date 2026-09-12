@@ -1,6 +1,7 @@
 // Load the saved theme or use the device preference
 (function initTheme() {
   const saved = localStorage.getItem("theme");
+
   const prefersDark = window.matchMedia(
     "(prefers-color-scheme: dark)"
   ).matches;
@@ -17,45 +18,60 @@ const header = document.querySelector(".site-header");
 
 // Theme toggle
 themeBtn?.addEventListener("click", () => {
-  const dark = !document.documentElement.classList.contains("dark");
+  const dark =
+    !document.documentElement.classList.contains("dark");
 
   document.documentElement.classList.toggle("dark", dark);
-  localStorage.setItem("theme", dark ? "dark" : "light");
+
+  localStorage.setItem(
+    "theme",
+    dark ? "dark" : "light"
+  );
 });
 
 // Mobile navigation
 menuBtn?.addEventListener("click", () => {
-  const open = links?.classList.toggle("open") ?? false;
+  const open =
+    links?.classList.toggle("open") ?? false;
 
-  menuBtn.setAttribute("aria-expanded", String(open));
+  menuBtn.setAttribute(
+    "aria-expanded",
+    String(open)
+  );
 });
 
 // Smooth scrolling
-document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
-  anchor.addEventListener("click", (event) => {
-    const href = anchor.getAttribute("href");
-    const target = document.querySelector(href);
+document
+  .querySelectorAll('a[href^="#"]')
+  .forEach((anchor) => {
+    anchor.addEventListener("click", (event) => {
+      const href = anchor.getAttribute("href");
+      const target = document.querySelector(href);
 
-    if (!target) {
-      return;
-    }
+      if (!target) {
+        return;
+      }
 
-    event.preventDefault();
+      event.preventDefault();
 
-    const top =
-      target.getBoundingClientRect().top +
-      window.scrollY -
-      75;
+      const top =
+        target.getBoundingClientRect().top +
+        window.scrollY -
+        75;
 
-    window.scrollTo({
-      top,
-      behavior: "smooth",
+      window.scrollTo({
+        top,
+        behavior: "smooth",
+      });
+
+      links?.classList.remove("open");
+
+      menuBtn?.setAttribute(
+        "aria-expanded",
+        "false"
+      );
     });
-
-    links?.classList.remove("open");
-    menuBtn?.setAttribute("aria-expanded", "false");
   });
-});
 
 // Header styling while scrolling
 window.addEventListener(
@@ -66,7 +82,9 @@ window.addEventListener(
       window.scrollY > 12
     );
   },
-  { passive: true }
+  {
+    passive: true,
+  }
 );
 
 // Reveal elements while scrolling
@@ -85,13 +103,17 @@ if ("IntersectionObserver" in window) {
     }
   );
 
-  document.querySelectorAll(".reveal").forEach((element) => {
-    observer.observe(element);
-  });
+  document
+    .querySelectorAll(".reveal")
+    .forEach((element) => {
+      observer.observe(element);
+    });
 } else {
-  document.querySelectorAll(".reveal").forEach((element) => {
-    element.classList.add("visible");
-  });
+  document
+    .querySelectorAll(".reveal")
+    .forEach((element) => {
+      element.classList.add("visible");
+    });
 }
 
 // Course information
@@ -117,11 +139,11 @@ const courseData = {
       "Problem solving with Python using expressions, control structures, data collections, functions, file I/O, exceptions, and object-oriented programming.",
   },
 
-  linear: {
-    code: "MAT 2240",
-    title: "Linear Algebra",
+  cpp: {
+    code: "ECE 1310 / ECE 2310",
+    title: "C/C++ Programming",
     description:
-      "Vectors, matrices, systems of linear equations, linear transformations, eigenvalues, and engineering applications.",
+      "Engineering problem solving, structured programming, object-oriented design, and software development using C and C++.",
   },
 
   statistics: {
@@ -131,25 +153,50 @@ const courseData = {
       "Statistical reasoning, probability-based analysis, estimation, inference, and interpretation of real data.",
   },
 
-  physics: {
-    code: "PHY 1510/L · PHY 1520/L",
-    title: "Engineering Physics",
+  microelectronics: {
+    code: "ECE 2200",
+    title: "Introduction to Microelectronics",
     description:
-      "Calculus-based mechanics, electricity and magnetism, and experimental laboratory work for engineering applications.",
+      "Semiconductor devices, diode and transistor models, and the analysis and design of fundamental microelectronic circuits.",
+  },
+
+  datascience: {
+    code: "CS 2410",
+    title: "Fundamentals of Data Science",
+    description:
+      "Data preparation, exploration, visualization, modeling, and computational methods for extracting insight from data.",
+  },
+
+  microcontrollers: {
+    code: "ECE 3301/L",
+    title: "Microcontrollers",
+    description:
+      "Microcontroller architecture, embedded C firmware, peripherals, interfacing, timing, and hands-on laboratory development.",
+  },
+
+  oop: {
+    code: "ECE 2310",
+    title: "Object-Oriented Programming",
+    description:
+      "Software design using classes, objects, inheritance, polymorphism, data structures, and reusable programming practices.",
   },
 };
 
 // Course modal elements
 const modal = document.getElementById("courseModal");
+
 const modalPanel = modal?.querySelector(
   ".course-modal-content"
 );
+
 const modalCode = document.getElementById(
   "courseModalCode"
 );
+
 const modalTitle = document.getElementById(
   "courseModalTitle"
 );
+
 const modalDescription = document.getElementById(
   "courseModalDescription"
 );
@@ -174,10 +221,15 @@ function openCourseModal(courseKey) {
 
   modalCode.textContent = course.code;
   modalTitle.textContent = course.title;
-  modalDescription.textContent = course.description;
+  modalDescription.textContent =
+    course.description;
 
   modal.classList.add("open");
-  modal.setAttribute("aria-hidden", "false");
+
+  modal.setAttribute(
+    "aria-hidden",
+    "false"
+  );
 
   document.body.style.overflow = "hidden";
 
@@ -191,7 +243,11 @@ function closeCourseModal() {
   }
 
   modal.classList.remove("open");
-  modal.setAttribute("aria-hidden", "true");
+
+  modal.setAttribute(
+    "aria-hidden",
+    "true"
+  );
 
   document.body.style.overflow = "";
 
@@ -199,35 +255,50 @@ function closeCourseModal() {
 }
 
 // Course buttons
-document.querySelectorAll(".tag-button").forEach((button) => {
-  button.addEventListener("click", () => {
-    openCourseModal(button.dataset.course);
+document
+  .querySelectorAll(".tag-button")
+  .forEach((button) => {
+    button.addEventListener("click", () => {
+      openCourseModal(
+        button.dataset.course
+      );
+    });
   });
-});
 
-// Modal close button
+// Close modal button
 document
   .getElementById("courseModalClose")
-  ?.addEventListener("click", closeCourseModal);
+  ?.addEventListener(
+    "click",
+    closeCourseModal
+  );
 
-// Modal backdrop
+// Close modal by clicking backdrop
 document
   .getElementById("courseModalBackdrop")
-  ?.addEventListener("click", closeCourseModal);
+  ?.addEventListener(
+    "click",
+    closeCourseModal
+  );
 
 // Close modal using Escape
-document.addEventListener("keydown", (event) => {
-  if (
-    event.key === "Escape" &&
-    modal?.classList.contains("open")
-  ) {
-    closeCourseModal();
+document.addEventListener(
+  "keydown",
+  (event) => {
+    if (
+      event.key === "Escape" &&
+      modal?.classList.contains("open")
+    ) {
+      closeCourseModal();
+    }
   }
-});
+);
 
-// Automatically update the footer year
-const yearElement = document.getElementById("year");
+// Automatically update footer year
+const yearElement =
+  document.getElementById("year");
 
 if (yearElement) {
-  yearElement.textContent = new Date().getFullYear();
+  yearElement.textContent =
+    new Date().getFullYear();
 }
